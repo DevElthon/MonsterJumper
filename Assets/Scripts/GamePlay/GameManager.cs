@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         if (inGame)
         {
             timer += Time.deltaTime;
-            if(Time.timeScale == 1)
+            if (Time.timeScale == 1)
                 currentScore += (1 + (1 * (int)((timer) * 1f))) * dubPoints;
         }
     }

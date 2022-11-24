@@ -169,5 +169,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  destroyTimerA: 4
-  destroyTimerB: 6
+  destroyTimerA: 3
+  destroyTimerB: 5

@@ -56,6 +56,7 @@ public class GameplayUIController : MonoBehaviour
         else if(playerIsDead == true && !continuePanel.activeSelf && !deathPanel.activeSelf && GameManager.instance.lifeCount == 0)
         {
             deathPanel.SetActive(true);
+            AudioManager.Instance.PlayMusic(AudioManager.Instance.tracks[1]);
             GameManager.instance.inGame = false;
         }
 

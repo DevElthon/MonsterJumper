@@ -127,7 +127,6 @@ public class Player : MonoBehaviour
         if (collision.CompareTag(ENEMY_TAG) && GameManager.instance.invencible == false)
         {
             AudioManager.Instance.Play(AudioManager.Instance.sfx[4]);
-            AudioManager.Instance.PlayMusic(AudioManager.Instance.tracks[1]);
             Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag(ENEMY_TAG) && GameManager.instance.invencible == true)
