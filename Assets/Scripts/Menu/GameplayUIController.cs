@@ -47,19 +47,6 @@ public class GameplayUIController : MonoBehaviour
         Coins.text = GameManager.instance.coins.ToString();
         scoreAmount.text = GameManager.instance.currentScore.ToString();
 
-        //ContinuePanel control
-        if (playerIsDead == true && !continuePanel.activeSelf && !deathPanel.activeSelf && GameManager.instance.lifeCount == 1)
-        {
-            continuePanel.SetActive(true);
-            GameManager.instance.inGame = false;
-        }
-        else if(playerIsDead == true && !continuePanel.activeSelf && !deathPanel.activeSelf && GameManager.instance.lifeCount == 0)
-        {
-            deathPanel.SetActive(true);
-            AudioManager.Instance.PlayMusic(AudioManager.Instance.tracks[1]);
-            GameManager.instance.inGame = false;
-        }
-
         //Dub Points
         if(GameManager.instance.pointactive)
         {
@@ -85,6 +72,28 @@ public class GameplayUIController : MonoBehaviour
         //Methods to call
         ActiveHabilitiesFeed();
         RotateClock();
+    }
+
+    private void LateUpdate()
+    {
+        //ContinuePanel control
+        if (playerIsDead == true && !continuePanel.activeSelf && !deathPanel.activeSelf && GameManager.instance.lifeCount == 1)
+        {
+            continuePanel.SetActive(true);
+            GameManager.instance.inGame = false;
+        }
+
+        else if (playerIsDead == true && !continuePanel.activeSelf && !deathPanel.activeSelf && GameManager.instance.lifeCount == 0)
+        {
+            deathPanel.SetActive(true);
+            GameManager.instance.inGame = false;
+        }
+
+        if(deathPanel.activeSelf && (AudioManager.Instance.trackSource.clip != AudioManager.Instance.tracks[1]))
+        {
+            AudioManager.Instance.Play(AudioManager.Instance.sfx[4]);
+            AudioManager.Instance.PlayMusic(AudioManager.Instance.tracks[1]);
+        }       
     }
 
     public void ActiveHabilitiesFeed()
@@ -146,6 +155,7 @@ public class GameplayUIController : MonoBehaviour
         GameManager.instance.timer = 0;
         GameManager.instance.currentScore = 0;
         GameManager.instance.coins = 0;
+        GameManager.instance.lifeCount = 1;
         //buff time control
         GameManager.instance.dubCTimer = 0;
         GameManager.instance.dubPTimer = 0;

@@ -28,7 +28,6 @@ public class RewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     public string iOSAdUnitId => m_iOSAdUnitId;
 
     private string m_AdUnitId;
-    private int m_RewardAmount;
 
     private void Awake()
     {
@@ -49,7 +48,6 @@ public class RewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         m_ShowAdButton.onClick.AddListener(ShowAd);
 
         _loadAdButton.interactable = true;
-        m_RewardAmount = 0;
     }
 
     void OnDestroy()
@@ -102,6 +100,7 @@ public class RewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
             Advertisement.Load(m_AdUnitId, this);
             adsPanel.SetActive(false);
         }
+        LoadAd();
     }
 
     /// <param name="adUnitId">The ad unit ID for the ad</param>
@@ -109,6 +108,7 @@ public class RewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     /// <param name="message">The message accompanying the error</param>
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     {
+        LoadAd();
         Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
         // Use the error details to determine whether to try to load another ad.
     }

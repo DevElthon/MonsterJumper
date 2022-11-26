@@ -81,6 +81,7 @@ public class InterstitionADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
     /// <param name="showCompletionState"></param>
     public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) 
     {
+        LoadAd();
         GameManager.instance.InstantiatePlayer();
         GameManager.instance.invencible = true;
         GameManager.instance.invTimer = 0;
@@ -95,6 +96,7 @@ public class InterstitionADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
     /// <param name="message">The message accompanying the error</param>
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     {
+        LoadAd();
         Debug.LogError($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
     }
 

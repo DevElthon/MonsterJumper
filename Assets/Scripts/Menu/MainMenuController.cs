@@ -7,9 +7,10 @@ using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
-    [SerializeField] GameObject charOptionsPanel, optionsPanel, storePanel;
+    [SerializeField] GameObject charOptionsPanel, optionsPanel, storePanel, loadingScreen;
     [SerializeField] TextMeshProUGUI highscore;
     [SerializeField] TextMeshProUGUI Coins;
+    [SerializeField] Image loadingBArFill;
 
     private void Start()
     {
@@ -22,14 +23,34 @@ public class MainMenuController : MonoBehaviour
         Coins.text = PlayerPrefs.GetInt("Coins").ToString();
     }
 
-    public void PlayGame() 
+
+    public void LoadScene(int sceneId)
     {
         int selectedCharacter = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
 
         GameManager.instance.CharIndex = selectedCharacter;
 
-        SceneManager.LoadScene("Gameplay");
-        //charOptionsPanel.SetActive(false);
+        StartCoroutine(LoadSceneAsync(sceneId));
+    }
+
+    IEnumerator LoadSceneAsync(int sceneId)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
+        operation.allowSceneActivation = false;
+
+        loadingScreen.SetActive(true);
+
+
+        while (!operation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
+            loadingBArFill.fillAmount = progressValue;
+            if (Mathf.Approximately(operation.progress, 0.9f))
+            {
+                operation.allowSceneActivation = true;
+            }
+            yield return null;
+        }
     }
 
     public void OnClickPlay()
