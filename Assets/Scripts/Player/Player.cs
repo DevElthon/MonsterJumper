@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
             isGrounded = false;
             myBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
+        anim.SetFloat("Jump", myBody.velocity.y * 0.1f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

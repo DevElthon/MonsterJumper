@@ -68,7 +68,7 @@ public class MonsterSpawner : MonoBehaviour
             {
                 spawnedMonster.transform.position = new Vector3(rightPos.position.x, spawnedMonster.transform.position.y, spawnedMonster.transform.position.z);
                 spawnedMonster.GetComponent<Monster>().speed = -Random.Range(minVel, maxVel);
-                spawnedMonster.transform.localScale = new Vector3(-1f, 1f, 1f);
+                spawnedMonster.transform.localScale = new Vector3(spawnedMonster.transform.localScale.x  * - 1f, spawnedMonster.transform.localScale.y, 1f);
             }
 
             if(GameManager.instance.timer >= 15 && monsterReference[monsterReference.Count - 1] != FlyingMonsterReference[0])
