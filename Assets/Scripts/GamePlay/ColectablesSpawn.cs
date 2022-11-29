@@ -44,7 +44,7 @@ public class ColectablesSpawn : MonoBehaviour
             {
                 spawnColectable.transform.position = rightPos.position;
                 spawnColectable.GetComponent<Colectable>().speed = - Random.Range(4, 10);
-                spawnColectable.transform.localScale = new Vector3(spawnColectable.transform.localScale.x * - 1f, spawnColectable.transform.localScale.y, spawnColectable.transform.localScale.z);
+                spawnColectable.transform.localScale = new Vector3(spawnColectable.transform.localScale.x, spawnColectable.transform.localScale.y, spawnColectable.transform.localScale.z);
             }
         }
     }

@@ -62,6 +62,9 @@ public class GameManager : MonoBehaviour
 
     private Transform mainCam;
 
+    [HideInInspector]
+    public bool doubledCoins = false;
+
     private void Awake()
     {
         if (instance == null)

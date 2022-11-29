@@ -6,15 +6,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Provides methods to load and show rewarded ads as well as
-/// linking these functions to UI controls
-/// </summary>
 public class RewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-    [SerializeField] Button _loadAdButton;
-    public Button LoadAdButton => _loadAdButton;
-
     [SerializeField] Button m_ShowAdButton;
     public Button ShowAdButton => m_ShowAdButton;
 
@@ -38,22 +31,32 @@ public class RewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         }
 
         m_ShowAdButton.interactable = false;
-        _loadAdButton.interactable = false;
         adsPanel.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (adsPanel.activeSelf)
+        {
+            if (!GameManager.instance.inGame && m_ShowAdButton.interactable == false)
+            {
+                LoadAd();
+            }
+            if (!GameManager.instance.inGame && !m_ShowAdButton.interactable == false)
+            {
+                m_ShowAdButton.onClick.AddListener(ShowAd);
+            }
+        }
     }
 
     public void Initialize()
     {
-        _loadAdButton.onClick.AddListener(LoadAd);
         m_ShowAdButton.onClick.AddListener(ShowAd);
-
-        _loadAdButton.interactable = true;
     }
 
     void OnDestroy()
     {
         m_ShowAdButton.onClick.RemoveAllListeners();
-        _loadAdButton.onClick.RemoveAllListeners();
     }
 
     private void LoadAd()
@@ -67,7 +70,6 @@ public class RewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     /// <param name="adUnitId">The ad unit ID for the loaded ad</param>
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
-        _loadAdButton.interactable = false;
         m_ShowAdButton.interactable = true;
     }
 
@@ -95,12 +97,16 @@ public class RewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     {
         if (adUnitId.Equals(m_AdUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
-            Debug.Log("Unity Ads Rewarded Ad Completed");
-            GameManager.instance.coins *= 2;
-            Advertisement.Load(m_AdUnitId, this);
-            adsPanel.SetActive(false);
+            if (GameManager.instance.doubledCoins == false)
+            {
+                Debug.Log("Unity Ads Rewarded Ad Completed");
+                GameManager.instance.coins *= 2;
+                Advertisement.Load(m_AdUnitId, this);
+                GameManager.instance.doubledCoins = true;
+            }
         }
-        LoadAd();
+        if (adsPanel != null)
+            adsPanel.SetActive(false);
     }
 
     /// <param name="adUnitId">The ad unit ID for the ad</param>
@@ -108,7 +114,6 @@ public class RewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     /// <param name="message">The message accompanying the error</param>
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     {
-        LoadAd();
         Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
         // Use the error details to determine whether to try to load another ad.
     }

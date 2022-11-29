@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
     
     private void OnDestroy()
     {
-        GameManager.instance.OnPlayerDeath();
+        GameManager.instance.OnPlayerDeath(); 
         GameplayUIController.playerIsDead = true;
     }
 }

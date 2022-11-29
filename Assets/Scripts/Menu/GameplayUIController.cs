@@ -69,6 +69,11 @@ public class GameplayUIController : MonoBehaviour
             dubCFeed.gameObject.SetActive(false);
         }
 
+        if (GameManager.instance.inGame)
+        {
+            continuePanel.SetActive(false);
+        }
+
         //Methods to call
         ActiveHabilitiesFeed();
         RotateClock();
@@ -83,7 +88,7 @@ public class GameplayUIController : MonoBehaviour
             GameManager.instance.inGame = false;
         }
 
-        else if (playerIsDead == true && !continuePanel.activeSelf && !deathPanel.activeSelf && GameManager.instance.lifeCount == 0)
+        else if (playerIsDead == true && !continuePanel.activeSelf && !deathPanel.activeSelf && GameManager.instance.lifeCount == 0 && Time.timeScale == 0)
         {
             deathPanel.SetActive(true);
             GameManager.instance.inGame = false;
@@ -93,7 +98,7 @@ public class GameplayUIController : MonoBehaviour
         {
             AudioManager.Instance.Play(AudioManager.Instance.sfx[4]);
             AudioManager.Instance.PlayMusic(AudioManager.Instance.tracks[1]);
-        }       
+        }   
     }
 
     public void ActiveHabilitiesFeed()
@@ -167,12 +172,15 @@ public class GameplayUIController : MonoBehaviour
         GameManager.instance.coinactive = false;
         GameManager.instance.pointactive = false;
         GameManager.instance.invactive = false;
+        GameManager.instance.doubledCoins = false;
 
         dubCFeed.gameObject.SetActive(false);
         dubPFeed.gameObject.SetActive(false);
         clock[0].SetActive(false);
         clock[1].SetActive(false);
         clock[2].SetActive(false);
+
+        //ADSManager.ADSinstance.InitializeAds();
     }
 
     public void RestartGame()

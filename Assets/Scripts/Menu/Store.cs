@@ -20,6 +20,7 @@ public class Store : MonoBehaviour
     [SerializeField]
     private GameObject invlevel2Check, invlevel3Check, invlevel4Check;
 
+
     [Header("Characters")]
     [SerializeField]
     private GameObject char1lock, char2lock, char3lock, characterPanel;
@@ -34,6 +35,12 @@ public class Store : MonoBehaviour
 
     [Header("UpgradeBtn's price")]
     [SerializeField] TextMeshProUGUI upgrade1, upgrade2, upgrade3;
+
+    [Header("Backgrounds")]
+    [SerializeField]
+    private Button backgroundsPanelBtn;
+    [SerializeField]
+    private GameObject backgroundsPanel;
 
     private void Awake()
     {
@@ -231,8 +238,10 @@ public class Store : MonoBehaviour
         {
             upgradesPanel.SetActive(false);
             characterPanel.SetActive(true);
+            backgroundsPanel.SetActive(false);
             charactersPanelBtn.interactable = false;
             UpgradePanelBtn.interactable = true;
+            backgroundsPanelBtn.interactable = true;
         }
     }
 
@@ -242,8 +251,23 @@ public class Store : MonoBehaviour
         {
             upgradesPanel.SetActive(true);
             characterPanel.SetActive(false);
+            backgroundsPanel.SetActive(false);
             charactersPanelBtn.interactable = true;
             UpgradePanelBtn.interactable = false;
+            backgroundsPanelBtn.interactable = true;
+        }
+    }
+
+    public void BackgroundsClicked()
+    {
+        if (backgroundsPanel.activeSelf == false)
+        {
+            upgradesPanel.SetActive(false);
+            characterPanel.SetActive(false);
+            backgroundsPanel.SetActive(true);
+            charactersPanelBtn.interactable = true;
+            UpgradePanelBtn.interactable = true;
+            backgroundsPanelBtn.interactable = false;
         }
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private Transform player;
+    [HideInInspector]
+    public Transform player;
 
     private Vector3 tempPos;
 

@@ -15,16 +15,19 @@ public class ADSManager : MonoBehaviour, IUnityAdsInitializationListener
     public RewardedADS RewardedAdExample => m_RewardedAdExample;
 
     [Header("Interstitial Ads")]
-    [SerializeField] private InterstitionADS m_InterstitialAdExample;
+    [SerializeField] private SecondRewardedADS m_InterstitialAdExample;
 
-    public InterstitionADS InterstitialAdExample => m_InterstitialAdExample;
+    public SecondRewardedADS InterstitialAdExample => m_InterstitialAdExample;
 
-    private void Awake()
+    [HideInInspector]
+    public static ADSManager ADSinstance;
+
+    private void Start()
     {
         InitializeAds();
     }
 
-    private void InitializeAds()
+    public void InitializeAds()
     {
         var gameId = AndroidGameId;
         if (Application.platform == RuntimePlatform.IPhonePlayer)
