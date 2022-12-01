@@ -12,8 +12,11 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] TextMeshProUGUI Coins;
     [SerializeField] Image loadingBArFill;
 
+    public static int adCount = 0;
+
     private void Start()
     {
+        //PlayerPrefs.SetInt("Coins", 999999);
         UpgradeData();
     }
 
@@ -22,7 +25,6 @@ public class MainMenuController : MonoBehaviour
         highscore.text = PlayerPrefs.GetInt("HighScore").ToString();
         Coins.text = PlayerPrefs.GetInt("Coins").ToString();
     }
-
 
     public void LoadScene(int sceneId)
     {
@@ -80,5 +82,12 @@ public class MainMenuController : MonoBehaviour
     public void OnExitStoreclicked()
     {
         storePanel.SetActive(false);
+        BackgroundStore.backgroundIndex = 0;
+    }
+
+    public void MenuPlusAd()
+    {
+        adCount += 1;
+        Debug.Log(adCount);
     }
 } 

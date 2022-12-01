@@ -28,23 +28,26 @@ public class ColectablesSpawn : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(8, 16));
-
-            randomIndex = Random.Range(0, colectableReference.Length);
-            randomSide = Random.Range(0, 2);
-
-            spawnColectable = Instantiate(colectableReference[randomIndex]);
-
-            if (randomSide == 0)
+            if (PlayerPrefs.GetInt("Tutorial") == 2)
             {
-                spawnColectable.transform.position = leftPos.position;
-                spawnColectable.GetComponent<Colectable>().speed = Random.Range(4, 10);
-            }
-            else
-            {
-                spawnColectable.transform.position = rightPos.position;
-                spawnColectable.GetComponent<Colectable>().speed = - Random.Range(4, 10);
-                spawnColectable.transform.localScale = new Vector3(spawnColectable.transform.localScale.x, spawnColectable.transform.localScale.y, spawnColectable.transform.localScale.z);
+                yield return new WaitForSeconds(Random.Range(8, 16));
+
+                randomIndex = Random.Range(0, colectableReference.Length);
+                randomSide = Random.Range(0, 2);
+
+                spawnColectable = Instantiate(colectableReference[randomIndex]);
+
+                if (randomSide == 0)
+                {
+                    spawnColectable.transform.position = leftPos.position;
+                    spawnColectable.GetComponent<Colectable>().speed = Random.Range(4, 10);
+                }
+                else
+                {
+                    spawnColectable.transform.position = rightPos.position;
+                    spawnColectable.GetComponent<Colectable>().speed = -Random.Range(4, 10);
+                    spawnColectable.transform.localScale = new Vector3(spawnColectable.transform.localScale.x, spawnColectable.transform.localScale.y, spawnColectable.transform.localScale.z);
+                }
             }
         }
     }
@@ -53,21 +56,24 @@ public class ColectablesSpawn : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(4, 8));
-
-            randomSide = Random.Range(0, 2);
-            spawnColectable = Instantiate(coinsObj);
-
-            if (randomSide == 0)
+            if (PlayerPrefs.GetInt("Tutorial") == 2)
             {
-                spawnColectable.transform.position = leftPos.position;
-                spawnColectable.GetComponent<Colectable>().speed = Random.Range(4, 10);
-            }
-            else
-            {
-                spawnColectable.transform.position = rightPos.position;
-                spawnColectable.GetComponent<Colectable>().speed = -Random.Range(4, 10);
-                spawnColectable.transform.localScale = new Vector3(spawnColectable.transform.localScale.x * -1f, spawnColectable.transform.localScale.y, spawnColectable.transform.localScale.z);
+                yield return new WaitForSeconds(Random.Range(4, 8));
+
+                randomSide = Random.Range(0, 2);
+                spawnColectable = Instantiate(coinsObj);
+
+                if (randomSide == 0)
+                {
+                    spawnColectable.transform.position = leftPos.position;
+                    spawnColectable.GetComponent<Colectable>().speed = Random.Range(4, 10);
+                }
+                else
+                {
+                    spawnColectable.transform.position = rightPos.position;
+                    spawnColectable.GetComponent<Colectable>().speed = -Random.Range(4, 10);
+                    spawnColectable.transform.localScale = new Vector3(spawnColectable.transform.localScale.x * -1f, spawnColectable.transform.localScale.y, spawnColectable.transform.localScale.z);
+                }
             }
         }
     } 

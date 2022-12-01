@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class TutorialController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // player prefs para indicar que é tutorial 
+    // principal: mostrar como se movimentar
+    // Indicar que não é para encostar nos monstros
+    [SerializeField]
+    private GameObject rightTutorial, leftTutorial;
+    private void Awake()
     {
-        
+        if (!PlayerPrefs.HasKey("Tutorial"))
+            PlayerPrefs.SetInt("Tutorial", 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CheckTutorialRight()
     {
-        
+        rightTutorial.SetActive(false);
+        PlayerPrefs.SetInt("Tutorial", PlayerPrefs.GetInt("Tutorial") + 1);
+        leftTutorial.SetActive(true);
+    }
+
+    public void CheckTutorialLeft()
+    {
+        if(!rightTutorial.activeSelf && leftTutorial.activeSelf)
+        {
+            PlayerPrefs.SetInt("Tutorial", PlayerPrefs.GetInt("Tutorial") + 1);
+            leftTutorial.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if(PlayerPrefs.GetInt("Tutorial") == 2 && rightTutorial.activeSelf)
+        {
+            rightTutorial.SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("Tutorial") == 2 && leftTutorial.activeSelf)
+        {
+            leftTutorial.SetActive(false);
+        }
     }
 }

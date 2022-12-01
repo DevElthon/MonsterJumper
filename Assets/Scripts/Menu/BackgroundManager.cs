@@ -5,17 +5,19 @@ using UnityEngine;
 public class BackgroundManager : MonoBehaviour
 {
     [SerializeField]
-    private Sprite[] bgSprites;
+    private Sprite[] bgSprites, tileSprites;
     [SerializeField]
-    private SpriteRenderer bgSpriteRenderer;
+    private SpriteRenderer bgSpriteRenderer, tileSpriteRenderer;
     void Awake()
     {
-        bgSpriteRenderer.sprite = bgSprites[1];
+        bgSpriteRenderer.sprite = bgSprites[PlayerPrefs.GetInt("BackgroundActive")];
+        tileSpriteRenderer.sprite = tileSprites[PlayerPrefs.GetInt("BackgroundActive")];
     }
-
-    // Update is called once per frame
+    /*
     void Update()
     {
-        
+        if(bgSpriteRenderer.sprite != bgSprites[PlayerPrefs.GetInt("BackgroundActive")])
+            bgSpriteRenderer.sprite = bgSprites[PlayerPrefs.GetInt("BackgroundActive")];
     }
+    */
 }

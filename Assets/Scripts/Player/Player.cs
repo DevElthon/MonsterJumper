@@ -7,6 +7,10 @@ using UnityEngine.InputSystem.OnScreen;
 
 public class Player : MonoBehaviour
 {
+    [Header("Player FX")]
+    [SerializeField]
+    private GameObject invencibleFX;
+
     [Header("Move forces")]
     [SerializeField]
     private float moveForce = 10f;
@@ -59,11 +63,22 @@ public class Player : MonoBehaviour
     {
         if (GameManager.instance.invencible)
         {
-            sr.color = new Color(1, 1, 1, 0.4f);
+            sr.color = new Color(1, 1, 1, 0.6f);
+            invencibleFX.SetActive(true);
+            if(GameManager.instance.invTimer > GameManager.instance.maxInvTimer * 0.6)
+            {
+                invencibleFX.gameObject.GetComponent<Animator>().SetBool("Ending", true);
+            }
+            else
+            {
+                invencibleFX.gameObject.GetComponent<Animator>().SetBool("Ending", false);
+            }
         }
         else
         {
             sr.color = new Color(1, 1, 1, 1);
+            invencibleFX.SetActive(false);
+            invencibleFX.gameObject.GetComponent<Animator>().SetBool("Ending", false);
         }
     }
 
@@ -129,8 +144,10 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         else if (collision.gameObject.CompareTag(ENEMY_TAG) && GameManager.instance.invencible == true)
         {
+            GameManager.instance.currentScore += 5000 * PlayerPrefs.GetInt("PointsLevel");
             AudioManager.Instance.Play(AudioManager.Instance.sfx[3]);
             Destroy(collision.gameObject);
         }
