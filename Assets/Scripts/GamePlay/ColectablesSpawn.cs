@@ -7,7 +7,7 @@ public class ColectablesSpawn : MonoBehaviour
     [SerializeField]
     private GameObject[] colectableReference;
     [SerializeField]
-    private GameObject coinsObj;
+    private GameObject[] coinsObj;
 
     private GameObject spawnColectable;
 
@@ -28,10 +28,10 @@ public class ColectablesSpawn : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(Random.Range(6, 14));
+
             if (PlayerPrefs.GetInt("Tutorial") == 2)
             {
-                yield return new WaitForSeconds(Random.Range(8, 16));
-
                 randomIndex = Random.Range(0, colectableReference.Length);
                 randomSide = Random.Range(0, 2);
 
@@ -56,12 +56,12 @@ public class ColectablesSpawn : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(Random.Range(3, 6));
             if (PlayerPrefs.GetInt("Tutorial") == 2)
             {
-                yield return new WaitForSeconds(Random.Range(4, 8));
-
+                int RandomCoin = Random.Range(0, coinsObj.Length);
                 randomSide = Random.Range(0, 2);
-                spawnColectable = Instantiate(coinsObj);
+                spawnColectable = Instantiate(coinsObj[RandomCoin]);
 
                 if (randomSide == 0)
                 {
@@ -72,9 +72,9 @@ public class ColectablesSpawn : MonoBehaviour
                 {
                     spawnColectable.transform.position = rightPos.position;
                     spawnColectable.GetComponent<Colectable>().speed = -Random.Range(4, 10);
-                    spawnColectable.transform.localScale = new Vector3(spawnColectable.transform.localScale.x * -1f, spawnColectable.transform.localScale.y, spawnColectable.transform.localScale.z);
+                    spawnColectable.transform.localScale = new Vector3(spawnColectable.transform.localScale.x, spawnColectable.transform.localScale.y, spawnColectable.transform.localScale.z);
                 }
-            }
+            }   
         }
     } 
 }

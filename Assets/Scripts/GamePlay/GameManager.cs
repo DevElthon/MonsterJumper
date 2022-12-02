@@ -76,6 +76,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (!PlayerPrefs.HasKey("Tutorial"))
+            PlayerPrefs.SetInt("Tutorial", 0);
     }
 
     private void LateUpdate()
@@ -83,7 +86,7 @@ public class GameManager : MonoBehaviour
         if (inGame)
         {
             timer += Time.deltaTime;
-            if (Time.timeScale == 1)
+            if (Time.timeScale == 1 && PlayerPrefs.GetInt("Tutorial") == 2)
                 currentScore += (1 + (1 * (int)((timer) * 1f))) * dubPoints;
         }
     }

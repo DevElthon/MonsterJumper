@@ -9,11 +9,11 @@ public class Player : MonoBehaviour
 {
     [Header("Player FX")]
     [SerializeField]
-    private GameObject invencibleFX;
+    private GameObject invencibleFX, dpointsFX;
 
     [Header("Move forces")]
-    [SerializeField]
-    private float moveForce = 10f;
+    //[HideInInspector]
+    public float moveForce = 10f;
     [SerializeField]
     private float jumpForce = 11f;
 
@@ -57,25 +57,49 @@ public class Player : MonoBehaviour
     private void LateUpdate()
     {
         BecomeInvencible();
+        InDPoints();
+    }
+
+    private void InDPoints()
+    {
+        if(GameManager.instance.dubPoints > 1)
+        {
+            dpointsFX.SetActive(true);
+            if (GameManager.instance.dubPTimer > GameManager.instance.maxDubTime * 0.6)
+            {
+                dpointsFX.gameObject.GetComponent<Animator>().SetBool("Ending", true);
+            }
+            else
+            {
+                dpointsFX.gameObject.GetComponent<Animator>().SetBool("Ending", false);
+            }
+        }
+        else
+        {
+            dpointsFX.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+            dpointsFX.SetActive(false);
+            dpointsFX.gameObject.GetComponent<Animator>().SetBool("Ending", false);
+        }
     }
 
     public void BecomeInvencible()
     {
         if (GameManager.instance.invencible)
         {
-            sr.color = new Color(1, 1, 1, 0.6f);
             invencibleFX.SetActive(true);
-            if(GameManager.instance.invTimer > GameManager.instance.maxInvTimer * 0.6)
+            if (GameManager.instance.invTimer > GameManager.instance.maxInvTimer * 0.6)
             {
                 invencibleFX.gameObject.GetComponent<Animator>().SetBool("Ending", true);
             }
             else
             {
+                sr.color = new Color(1, 1, 1, 0.6f);
                 invencibleFX.gameObject.GetComponent<Animator>().SetBool("Ending", false);
             }
         }
         else
         {
+            invencibleFX.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.8f);
             sr.color = new Color(1, 1, 1, 1);
             invencibleFX.SetActive(false);
             invencibleFX.gameObject.GetComponent<Animator>().SetBool("Ending", false);
@@ -89,11 +113,19 @@ public class Player : MonoBehaviour
 
         if (inputR > 0)
         {
+            if (PlayerPrefs.GetInt("Tutorial") != 2)
+            {
+                TutorialController.RightTimer += Time.deltaTime;
+            }
             transform.position += new Vector3(inputR, 0f, 0f) * moveForce * Time.deltaTime;
         }
 
         if (inputL > 0)
         {
+            if (PlayerPrefs.GetInt("Tutorial") != 2)
+            {
+                TutorialController.LeftTimer += Time.deltaTime;
+            }
             transform.position += new Vector3(-inputL, 0f, 0f) * moveForce * Time.deltaTime;
         }
     }
@@ -147,7 +179,7 @@ public class Player : MonoBehaviour
 
         else if (collision.gameObject.CompareTag(ENEMY_TAG) && GameManager.instance.invencible == true)
         {
-            GameManager.instance.currentScore += 5000 * PlayerPrefs.GetInt("PointsLevel");
+            GameManager.instance.currentScore += 1000 * PlayerPrefs.GetInt("PointsLevel");
             AudioManager.Instance.Play(AudioManager.Instance.sfx[3]);
             Destroy(collision.gameObject);
         }

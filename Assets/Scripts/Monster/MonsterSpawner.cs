@@ -40,7 +40,13 @@ public class MonsterSpawner : MonoBehaviour
         if(GameManager.instance.timer >= GameManager.instance.maxTimer)
         {
             GameManager.instance.maxTimer += 10f;
-            if(minVel <= 10 && maxVel <= 14)
+            if(minVel <= 8 && maxVel <= 12)
+            {
+                minVel += 1;
+                maxVel += 2;
+            }
+            GameManager.instance.maxTimer += 30;
+            if (minVel <= 10 && maxVel <= 14)
             {
                 minVel += 2;
                 maxVel += 3;
@@ -52,10 +58,10 @@ public class MonsterSpawner : MonoBehaviour
     {
         while (true) 
         {
-            if(PlayerPrefs.GetInt("Tutorial") == 2)
-            {
-                yield return new WaitForSeconds(Random.Range(1, 5));
+            yield return new WaitForSeconds(Random.Range(2, 4));
 
+            if (PlayerPrefs.GetInt("Tutorial") == 2)
+            {
                 randomIndex = Random.Range(0, monsterReference.Count);
                 randomSide = Random.Range(0, 2);
 
@@ -77,7 +83,7 @@ public class MonsterSpawner : MonoBehaviour
                 {
                     monsterReference.Add(FlyingMonsterReference[0]);
                 }
-            }
+            }  
         } 
     }
 } 

@@ -90,4 +90,28 @@ public class MainMenuController : MonoBehaviour
         adCount += 1;
         Debug.Log(adCount);
     }
+
+    public void ResetALLData()
+    {
+        PlayerPrefs.SetInt("CoinsLevel", 0);
+        PlayerPrefs.SetInt("Coins", 0);
+        PlayerPrefs.SetInt("PointsLevel", 0);
+        PlayerPrefs.SetInt("InvLevel", 0);
+        PlayerPrefs.SetInt("Char1Unlocked", 0);
+        PlayerPrefs.SetInt("Char2Unlocked", 0);
+        PlayerPrefs.SetInt("Char3Unlocked", 0);
+        PlayerPrefs.SetInt("Tutorial", 0);
+        PlayerPrefs.SetInt("HighScore", 0);
+        PlayerPrefs.SetInt("BackgroundActive", 0);
+        PlayerPrefs.SetInt("Background1", 0);
+        PlayerPrefs.SetInt("Background2", 0);
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void HackTheGame()
+    {
+        PlayerPrefs.SetInt("Coins", 9999999);
+        PlayerPrefs.SetInt("HighScore", 9999999);
+        SceneManager.LoadScene("MainMenu");
+    }
 } 

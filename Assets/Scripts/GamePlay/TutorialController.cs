@@ -9,25 +9,43 @@ public class TutorialController : MonoBehaviour
     // Indicar que não é para encostar nos monstros
     [SerializeField]
     private GameObject rightTutorial, leftTutorial;
+
+    public static float RightTimer = 0;
+    public static float LeftTimer = 0;
+
     private void Awake()
     {
-        if (!PlayerPrefs.HasKey("Tutorial"))
-            PlayerPrefs.SetInt("Tutorial", 0);
+        //PlayerPrefs.SetInt("Tutorial", 0 );
+        if(PlayerPrefs.GetInt("Tutorial") == 2)
+        {
+            rightTutorial.SetActive(false);
+            leftTutorial.SetActive(false);
+            this.gameObject.GetComponent<TutorialController>().enabled = false;
+        }
     }
 
     public void CheckTutorialRight()
     {
-        rightTutorial.SetActive(false);
-        PlayerPrefs.SetInt("Tutorial", PlayerPrefs.GetInt("Tutorial") + 1);
-        leftTutorial.SetActive(true);
+        if(rightTutorial.activeSelf && !leftTutorial.activeSelf)
+        {
+            if(RightTimer >= 3)
+            {
+                rightTutorial.SetActive(false);
+                PlayerPrefs.SetInt("Tutorial", PlayerPrefs.GetInt("Tutorial") + 1);
+                leftTutorial.SetActive(true);
+            }
+        }
     }
 
     public void CheckTutorialLeft()
     {
         if(!rightTutorial.activeSelf && leftTutorial.activeSelf)
         {
-            PlayerPrefs.SetInt("Tutorial", PlayerPrefs.GetInt("Tutorial") + 1);
-            leftTutorial.SetActive(false);
+            if (LeftTimer >= 3)
+            {
+                PlayerPrefs.SetInt("Tutorial", PlayerPrefs.GetInt("Tutorial") + 1);
+                leftTutorial.SetActive(false);
+            }
         }
     }
 

@@ -129,17 +129,17 @@ public class BackgroundStore : MonoBehaviour
     {
         if(background == 1)
         {
-            if(PlayerPrefs.GetInt("Coins") >= 500 && PlayerPrefs.GetInt("Background1") == 0)
+            if(PlayerPrefs.GetInt("Coins") >= 5000 && PlayerPrefs.GetInt("Background1") == 0)
             {
-                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 500);
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 5000);
                 PlayerPrefs.SetInt("Background1", 1);
             }
         }
         if (background == 2)
         {
-            if (PlayerPrefs.GetInt("Coins") >= 1000 && PlayerPrefs.GetInt("Background2") == 0)
+            if (PlayerPrefs.GetInt("Coins") >= 10000 && PlayerPrefs.GetInt("Background2") == 0)
             {
-                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 1000);
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 10000);
                 PlayerPrefs.SetInt("Background2", 1);
             }
         }

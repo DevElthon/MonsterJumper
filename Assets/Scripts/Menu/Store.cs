@@ -76,12 +76,12 @@ public class Store : MonoBehaviour
         //Coins Level
         if (PlayerPrefs.GetInt("CoinsLevel") >= 1 && coinlevel2Check.activeSelf == false)
         {
-            upgrade1.text = "Upgrade: \n1000";
+            upgrade1.text = "Upgrade: \n2000";
             coinlevel2Check.SetActive(true);
         }
         if (PlayerPrefs.GetInt("CoinsLevel") >= 2 && coinlevel3Check.activeSelf == false)
         {
-            upgrade1.text = "Upgrade: \n2000";
+            upgrade1.text = "Upgrade: \n4000";
             coinlevel2Check.SetActive(true);
             coinlevel3Check.SetActive(true);
         }
@@ -95,12 +95,12 @@ public class Store : MonoBehaviour
         //Points Level
         if (PlayerPrefs.GetInt("PointsLevel") >= 1 && pointslevel2Check.activeSelf == false)
         {
-            upgrade2.text = "Upgrade: \n1000";
+            upgrade2.text = "Upgrade: \n2000";
             pointslevel2Check.SetActive(true);
         }
         if (PlayerPrefs.GetInt("PointsLevel") >= 2 && pointslevel3Check.activeSelf == false )
         {
-            upgrade2.text = "Upgrade: \n2000";
+            upgrade2.text = "Upgrade: \n4000";
             pointslevel3Check.SetActive(true);
         }
         if (PlayerPrefs.GetInt("PointsLevel") >= 3 && pointslevel4Check.activeSelf == false)
@@ -112,12 +112,12 @@ public class Store : MonoBehaviour
         //Invencible Level
         if (PlayerPrefs.GetInt("InvLevel") >= 1 && invlevel2Check.activeSelf == false)
         {
-            upgrade3.text = "Upgrade: \n1000";
+            upgrade3.text = "Upgrade: \n2000";
             invlevel2Check.SetActive(true);
         }
         if (PlayerPrefs.GetInt("InvLevel") >= 2 && invlevel3Check.activeSelf == false)
         {
-            upgrade3.text = "Upgrade: \n2000";
+            upgrade3.text = "Upgrade: \n4000";
             invlevel3Check.SetActive(true);
         }
         if (PlayerPrefs.GetInt("InvLevel") >= 3 && invlevel4Check.activeSelf == false)
@@ -144,90 +144,90 @@ public class Store : MonoBehaviour
 
     public void OnUpgradeCoinClicked()
     {
-        if(PlayerPrefs.GetInt("Coins") >= 500 && PlayerPrefs.GetInt("CoinsLevel") == 0)
+        if(PlayerPrefs.GetInt("Coins") >= 1000 && PlayerPrefs.GetInt("CoinsLevel") == 0)
         {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 500 );
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 1000 );
             PlayerPrefs.SetInt("CoinsLevel", PlayerPrefs.GetInt("CoinsLevel") + 1);
         }
 
-        if (PlayerPrefs.GetInt("Coins") >= 1000 && PlayerPrefs.GetInt("CoinsLevel") == 1 && coinlevel2Check.activeSelf == true)
-        {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 1000);
-            PlayerPrefs.SetInt("CoinsLevel", PlayerPrefs.GetInt("CoinsLevel") + 1);
-        }
-
-        if (PlayerPrefs.GetInt("Coins") >= 2000 && PlayerPrefs.GetInt("CoinsLevel") == 2 && coinlevel3Check.activeSelf == true)
+        if (PlayerPrefs.GetInt("Coins") >= 2000 && PlayerPrefs.GetInt("CoinsLevel") == 1 && coinlevel2Check.activeSelf == true)
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 2000);
+            PlayerPrefs.SetInt("CoinsLevel", PlayerPrefs.GetInt("CoinsLevel") + 1);
+        }
+
+        if (PlayerPrefs.GetInt("Coins") >= 4000 && PlayerPrefs.GetInt("CoinsLevel") == 2 && coinlevel3Check.activeSelf == true)
+        {
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 4000);
             PlayerPrefs.SetInt("CoinsLevel", PlayerPrefs.GetInt("CoinsLevel") + 1);
         }
     }
 
     public void OnUpgradePointsClicked()
     {
-        if (PlayerPrefs.GetInt("Coins") >= 500 && PlayerPrefs.GetInt("PointsLevel") == 0)
-        {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 500);
-            PlayerPrefs.SetInt("PointsLevel", PlayerPrefs.GetInt("PointsLevel") + 1);
-        }
-
-        if (PlayerPrefs.GetInt("Coins") >= 1000 && PlayerPrefs.GetInt("PointsLevel") == 1 && pointslevel2Check.activeSelf == true)
+        if (PlayerPrefs.GetInt("Coins") >= 1000 && PlayerPrefs.GetInt("PointsLevel") == 0)
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 1000);
             PlayerPrefs.SetInt("PointsLevel", PlayerPrefs.GetInt("PointsLevel") + 1);
         }
 
-        if (PlayerPrefs.GetInt("Coins") >= 2000 && PlayerPrefs.GetInt("PointsLevel") == 2 && pointslevel3Check.activeSelf == true)
+        if (PlayerPrefs.GetInt("Coins") >= 2000 && PlayerPrefs.GetInt("PointsLevel") == 1 && pointslevel2Check.activeSelf == true)
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 2000);
+            PlayerPrefs.SetInt("PointsLevel", PlayerPrefs.GetInt("PointsLevel") + 1);
+        }
+
+        if (PlayerPrefs.GetInt("Coins") >= 4000 && PlayerPrefs.GetInt("PointsLevel") == 2 && pointslevel3Check.activeSelf == true)
+        {
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 4000);
             PlayerPrefs.SetInt("PointsLevel", PlayerPrefs.GetInt("PointsLevel") + 1);
         }
     }
 
     public void OnUpgradeInvClicked()
     {
-        if (PlayerPrefs.GetInt("Coins") >= 500 && PlayerPrefs.GetInt("InvLevel") == 0)
-        {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 500);
-            PlayerPrefs.SetInt("InvLevel", PlayerPrefs.GetInt("InvLevel") + 1);
-        }
-
-        if (PlayerPrefs.GetInt("Coins") >= 1000 && PlayerPrefs.GetInt("InvLevel") == 1 && invlevel2Check.activeSelf == true)
+        if (PlayerPrefs.GetInt("Coins") >= 1000 && PlayerPrefs.GetInt("InvLevel") == 0)
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 1000);
             PlayerPrefs.SetInt("InvLevel", PlayerPrefs.GetInt("InvLevel") + 1);
         }
 
-        if (PlayerPrefs.GetInt("Coins") >= 2000 && PlayerPrefs.GetInt("InvLevel") == 2 && invlevel3Check.activeSelf == true)
+        if (PlayerPrefs.GetInt("Coins") >= 2000 && PlayerPrefs.GetInt("InvLevel") == 1 && invlevel2Check.activeSelf == true)
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 2000);
+            PlayerPrefs.SetInt("InvLevel", PlayerPrefs.GetInt("InvLevel") + 1);
+        }
+
+        if (PlayerPrefs.GetInt("Coins") >= 4000 && PlayerPrefs.GetInt("InvLevel") == 2 && invlevel3Check.activeSelf == true)
+        {
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 4000);
             PlayerPrefs.SetInt("InvLevel", PlayerPrefs.GetInt("InvLevel") + 1);
         }
     }
 
     public void OnBuyChar1Clicked()
     {
-        if (PlayerPrefs.GetInt("Coins") >= 500 && PlayerPrefs.GetInt("Char1Unlocked") == 0)
+        if (PlayerPrefs.GetInt("Coins") >= 1000 && PlayerPrefs.GetInt("Char1Unlocked") == 0)
         {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 500);
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 1000);
             PlayerPrefs.SetInt("Char1Unlocked", 1);
         }
     }
 
     public void OnBuyChar2Clicked()
     {
-        if (PlayerPrefs.GetInt("Coins") >= 1000 && PlayerPrefs.GetInt("Char2Unlocked") == 0)
+        if (PlayerPrefs.GetInt("Coins") >= 2000 && PlayerPrefs.GetInt("Char2Unlocked") == 0)
         {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 1000);
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 2000);
             PlayerPrefs.SetInt("Char2Unlocked", 1);
         }
     }
 
     public void OnBuyChar3Clicked()
     {
-        if (PlayerPrefs.GetInt("Coins") >= 2000 && PlayerPrefs.GetInt("Char3Unlocked") == 0)
+        if (PlayerPrefs.GetInt("Coins") >= 4000 && PlayerPrefs.GetInt("Char3Unlocked") == 0)
         {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 2000);
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 4000);
             PlayerPrefs.SetInt("Char3Unlocked", 1);
         }
     }

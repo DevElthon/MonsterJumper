@@ -5,19 +5,32 @@ using UnityEngine;
 public class BackgroundManager : MonoBehaviour
 {
     [SerializeField]
-    private Sprite[] bgSprites, tileSprites;
+    CameraFollow mainCam;
+
     [SerializeField]
-    private SpriteRenderer bgSpriteRenderer, tileSpriteRenderer;
+    private Sprite[] bgSprites, tileSprites, tile2Sprites, moons;
+
+    [SerializeField]
+    GameObject[] monsterSpawner;
+
+    [SerializeField]
+    private SpriteRenderer bgSpriteRenderer, bgSkySpriteRenderer, tileSpriteRenderer, tiledowngroundSpriteRenderer, moonSpriteRenderer;
     void Awake()
     {
+        for (int i = 0; i < monsterSpawner.Length; i++)
+        {
+            if (i == PlayerPrefs.GetInt("BackgroundActive"))
+            {
+                monsterSpawner[i].SetActive(true);
+            }
+            else
+            {
+                monsterSpawner[i].SetActive(false);
+            }
+        }
+        moonSpriteRenderer.sprite = moons[PlayerPrefs.GetInt("BackgroundActive")];
         bgSpriteRenderer.sprite = bgSprites[PlayerPrefs.GetInt("BackgroundActive")];
         tileSpriteRenderer.sprite = tileSprites[PlayerPrefs.GetInt("BackgroundActive")];
+        tiledowngroundSpriteRenderer.sprite = tile2Sprites[PlayerPrefs.GetInt("BackgroundActive")];
     }
-    /*
-    void Update()
-    {
-        if(bgSpriteRenderer.sprite != bgSprites[PlayerPrefs.GetInt("BackgroundActive")])
-            bgSpriteRenderer.sprite = bgSprites[PlayerPrefs.GetInt("BackgroundActive")];
-    }
-    */
-}
+} 
