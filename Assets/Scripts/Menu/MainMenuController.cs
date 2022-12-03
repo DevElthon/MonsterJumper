@@ -7,7 +7,7 @@ using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
-    [SerializeField] GameObject charOptionsPanel, optionsPanel, storePanel, loadingScreen;
+    [SerializeField] GameObject charOptionsPanel, optionsPanel, storePanel, loadingScreen, inventoryPanel;
     [SerializeField] TextMeshProUGUI highscore;
     [SerializeField] TextMeshProUGUI Coins;
     [SerializeField] Image loadingBArFill;
@@ -28,10 +28,6 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadScene(int sceneId)
     {
-        int selectedCharacter = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
-
-        GameManager.instance.CharIndex = selectedCharacter;
-
         StartCoroutine(LoadSceneAsync(sceneId));
     }
 
@@ -55,6 +51,7 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
+    /*
     public void OnClickPlay()
     {
         charOptionsPanel.SetActive(true);
@@ -63,6 +60,7 @@ public class MainMenuController : MonoBehaviour
     {
         charOptionsPanel.SetActive(false);
     }
+    */
 
     public void OnClickOptions()
     {
@@ -83,6 +81,16 @@ public class MainMenuController : MonoBehaviour
     {
         storePanel.SetActive(false);
         BackgroundStore.backgroundIndex = 0;
+    }
+
+    public void OnInventoryClicked()
+    {
+        inventoryPanel.SetActive(true);
+    }
+
+    public void OnExitInventoryclicked()
+    {
+        inventoryPanel.SetActive(false);
     }
 
     public void MenuPlusAd()

@@ -161,6 +161,8 @@ public class BackgroundStore : MonoBehaviour
         */
     }
 
+
+    //Deveria estar no invetoryMenu, mas sem tempo irmão
     public void chooseBackgroundPlus()
     {
         backgroundIndex += 1;

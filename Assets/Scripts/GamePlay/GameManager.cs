@@ -18,12 +18,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject[] characters;
-    private int _charIndex;
-    public int CharIndex
-    {
-        get { return _charIndex; }
-        set { _charIndex = value; }
-    }
+
+    [HideInInspector]
+    public int CharIndex;
 
     [HideInInspector]
     public int currentScore = 0;
@@ -79,6 +76,8 @@ public class GameManager : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("Tutorial"))
             PlayerPrefs.SetInt("Tutorial", 0);
+
+        CharIndex = PlayerPrefs.GetInt("CharacterActive");
     }
 
     private void LateUpdate()

@@ -8,7 +8,7 @@ public class BackgroundManager : MonoBehaviour
     CameraFollow mainCam;
 
     [SerializeField]
-    private Sprite[] bgSprites, tileSprites, tile2Sprites, moons;
+    private Sprite[] bgSprites, bgSkySprites, tileSprites, tile2Sprites, moons;
 
     [SerializeField]
     GameObject[] monsterSpawner;
@@ -32,5 +32,6 @@ public class BackgroundManager : MonoBehaviour
         bgSpriteRenderer.sprite = bgSprites[PlayerPrefs.GetInt("BackgroundActive")];
         tileSpriteRenderer.sprite = tileSprites[PlayerPrefs.GetInt("BackgroundActive")];
         tiledowngroundSpriteRenderer.sprite = tile2Sprites[PlayerPrefs.GetInt("BackgroundActive")];
+        bgSkySpriteRenderer.sprite = bgSkySprites[PlayerPrefs.GetInt("BackgroundActive")];
     }
 } 
