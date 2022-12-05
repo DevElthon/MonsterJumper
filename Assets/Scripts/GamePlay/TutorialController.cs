@@ -28,10 +28,10 @@ public class TutorialController : MonoBehaviour
     {
         if(rightTutorial.activeSelf && !leftTutorial.activeSelf)
         {
-            if(RightTimer >= 3)
+            if(RightTimer >= 2)
             {
                 rightTutorial.SetActive(false);
-                PlayerPrefs.SetInt("Tutorial", PlayerPrefs.GetInt("Tutorial") + 1);
+                PlayerPrefs.SetInt("Tutorial", 1);
                 leftTutorial.SetActive(true);
             }
         }
@@ -41,11 +41,27 @@ public class TutorialController : MonoBehaviour
     {
         if(!rightTutorial.activeSelf && leftTutorial.activeSelf)
         {
-            if (LeftTimer >= 3)
+            if (LeftTimer >= 2)
             {
-                PlayerPrefs.SetInt("Tutorial", PlayerPrefs.GetInt("Tutorial") + 1);
+                PlayerPrefs.SetInt("Tutorial", 2);
                 leftTutorial.SetActive(false);
             }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if(RightTimer >= 2 && rightTutorial.activeSelf)
+        {
+            rightTutorial.SetActive(false);
+            PlayerPrefs.SetInt("Tutorial", 1);
+            leftTutorial.SetActive(true);
+        }
+
+        if(LeftTimer >= 2 && leftTutorial.activeSelf)
+        {
+            PlayerPrefs.SetInt("Tutorial", 2);
+            leftTutorial.SetActive(false);
         }
     }
 

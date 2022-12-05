@@ -275,7 +275,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 1cbaafb90c0dfda41a03254a5da69e5a, type: 3}
+      m_Icon: {fileID: 2800000, guid: e63b9937a9dff6149a462750041ed001, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -823,8 +823,8 @@ PlayerSettings:
     Build: 0
     Collab: 0
     Game Performance: 0
-    Legacy Analytics: 0
-    Purchasing: 0
+    Legacy Analytics: 1
+    Purchasing: 1
     UDP: 0
     Unity Ads: 1
   luminIcon:

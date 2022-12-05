@@ -8,6 +8,13 @@ public class Store : MonoBehaviour
 {
     private GameManager gameManagerInstance;
 
+    [Header("Página de personagens na loja")]
+    [SerializeField]
+    private GameObject[] charPage;
+    [SerializeField]
+    private GameObject rightCharpage, leftCharpage;
+    int pagecount = 0;
+
     [Header("Coins upgrade check")]
     [SerializeField]
     private GameObject coinlevel2Check, coinlevel3Check, coinlevel4Check;
@@ -23,7 +30,7 @@ public class Store : MonoBehaviour
 
     [Header("Characters")]
     [SerializeField]
-    private GameObject char1lock, char2lock, char3lock, characterPanel;
+    private GameObject char1lock, char2lock, char3lock, char5lock, characterPanel;
     [SerializeField]
     private Button UpgradePanelBtn;
 
@@ -63,6 +70,9 @@ public class Store : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("Char3Unlocked"))
             PlayerPrefs.SetInt("Char3Unlocked", 0);
+
+        if (!PlayerPrefs.HasKey("Char5Unlocked"))
+            PlayerPrefs.SetInt("Char5Unlocked", 0);
     }
 
     private void Start()
@@ -140,6 +150,40 @@ public class Store : MonoBehaviour
         {
             char3lock.SetActive(false);
         }
+
+        //CharPage
+        if (pagecount == charPage.Length - 1 && rightCharpage.activeSelf)
+        {
+            rightCharpage.SetActive(false);
+        }
+        else if(pagecount < charPage.Length - 1 && !rightCharpage.activeSelf)
+        {
+            rightCharpage.SetActive(true);
+        }
+
+        if (pagecount == 0 && leftCharpage.activeSelf)
+        {
+            leftCharpage.SetActive(false);
+        }
+
+        else if (pagecount > 0 && !leftCharpage.activeSelf)
+        {
+            leftCharpage.SetActive(true);
+        }
+    }
+
+    public void onClickRightCharPage()
+    {
+        pagecount += 1;
+        charPage[pagecount - 1].SetActive(false);
+        charPage[pagecount].SetActive(true);
+    }
+
+    public void onClickLeftCharPage()
+    {
+        pagecount -= 1;
+        charPage[pagecount + 1].SetActive(false);
+        charPage[pagecount].SetActive(true);
     }
 
     public void OnUpgradeCoinClicked()
@@ -229,6 +273,15 @@ public class Store : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 4000);
             PlayerPrefs.SetInt("Char3Unlocked", 1);
+        }
+    }
+
+    public void OnBuyChar5Clicked()
+    {
+        if (PlayerPrefs.GetInt("Coins") >= 8000 && PlayerPrefs.GetInt("Char5Unlocked") == 0)
+        {
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 8000);
+            PlayerPrefs.SetInt("Char5Unlocked", 1);
         }
     }
 

@@ -22,6 +22,9 @@ public class MonsterSpawner : MonoBehaviour
     private int minVel = 2;
     private int maxVel = 4;
 
+    private int maxTimeSpawn = 8;
+    private int minTimeSpawn = 5;
+
     private void Awake()
     {
         for(int i = 0; i < FlyingMonsterReference.Count; i++)
@@ -39,17 +42,32 @@ public class MonsterSpawner : MonoBehaviour
     {
         if(GameManager.instance.timer >= GameManager.instance.maxTimer)
         {
-            GameManager.instance.maxTimer += 10f;
-            if(minVel <= 8 && maxVel <= 12)
+            GameManager.instance.maxTimer += 7f;
+            if(minVel <= 6 && maxVel <= 10 && GameManager.instance.maxTimer == 22)
             {
                 minVel += 1;
                 maxVel += 2;
+                minTimeSpawn = 3;
+                maxTimeSpawn = 6;
+                Debug.Log("1");
             }
-            GameManager.instance.maxTimer += 30;
-            if (minVel <= 10 && maxVel <= 14)
+
+            if (minVel <= 8 && maxVel <= 12 && GameManager.instance.maxTimer == 29)
             {
                 minVel += 2;
                 maxVel += 3;
+                minTimeSpawn = 2;
+                maxTimeSpawn = 5;
+                Debug.Log("2");
+            }
+
+            if (minVel <= 10 && maxVel <= 14 && GameManager.instance.maxTimer == 36)
+            {
+                minVel += 3;
+                maxVel += 4;
+                minTimeSpawn = 2;
+                maxTimeSpawn = 3;
+                Debug.Log("3");
             }
         }
     }
@@ -58,7 +76,7 @@ public class MonsterSpawner : MonoBehaviour
     {
         while (true) 
         {
-            yield return new WaitForSeconds(Random.Range(2, 4));
+            yield return new WaitForSeconds(Random.Range(minTimeSpawn, maxTimeSpawn));
 
             if (PlayerPrefs.GetInt("Tutorial") == 2)
             {

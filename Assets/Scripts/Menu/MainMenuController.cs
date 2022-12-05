@@ -7,7 +7,7 @@ using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
-    [SerializeField] GameObject charOptionsPanel, optionsPanel, storePanel, loadingScreen, inventoryPanel;
+    [SerializeField] GameObject charOptionsPanel, optionsPanel, storePanel, loadingScreen, inventoryPanel, creditsPanel;
     [SerializeField] TextMeshProUGUI highscore;
     [SerializeField] TextMeshProUGUI Coins;
     [SerializeField] Image loadingBArFill;
@@ -72,6 +72,16 @@ public class MainMenuController : MonoBehaviour
         optionsPanel.SetActive(false);
     }
 
+    public void OnClickCredits()
+    {
+        creditsPanel.SetActive(true);
+    }
+
+    public void OnExitCredits()
+    {
+        creditsPanel.SetActive(false);
+    }
+
     public void OnClickStore()
     {
         storePanel.SetActive(true);
@@ -108,6 +118,7 @@ public class MainMenuController : MonoBehaviour
         PlayerPrefs.SetInt("Char1Unlocked", 0);
         PlayerPrefs.SetInt("Char2Unlocked", 0);
         PlayerPrefs.SetInt("Char3Unlocked", 0);
+        PlayerPrefs.SetInt("Char5Unlocked", 0);
         PlayerPrefs.SetInt("Tutorial", 0);
         PlayerPrefs.SetInt("HighScore", 0);
         PlayerPrefs.SetInt("BackgroundActive", 0);
@@ -118,8 +129,8 @@ public class MainMenuController : MonoBehaviour
 
     public void HackTheGame()
     {
-        PlayerPrefs.SetInt("Coins", 9999999);
-        PlayerPrefs.SetInt("HighScore", 9999999);
+        PlayerPrefs.SetInt("Coins", 999999);
+        PlayerPrefs.SetInt("HighScore", 999999);
         SceneManager.LoadScene("MainMenu");
     }
 } 
