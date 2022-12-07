@@ -37,7 +37,7 @@ public class MainMenuController : MonoBehaviour
         operation.allowSceneActivation = false;
 
         loadingScreen.SetActive(true);
-
+        yield return new WaitForSeconds(1.5f);
 
         while (!operation.isDone)
         {

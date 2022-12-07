@@ -90,7 +90,7 @@ public class MonsterSpawner : MonoBehaviour
                 if (randomSide == 0)
                 {
                     spawnedMonster.transform.position = new Vector3(leftPos.position.x, spawnedMonster.transform.position.y, spawnedMonster.transform.position.z);
-                    spawnedMonster.GetComponent<Monster>().speed = Random.Range(minVel, maxVel);
+                    spawnedMonster.GetComponent<Monster>().speed = Random.Range(minVel, maxVel);  
                 }
                 else
                 {
