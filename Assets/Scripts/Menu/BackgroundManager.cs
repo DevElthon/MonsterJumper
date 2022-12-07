@@ -11,7 +11,7 @@ public class BackgroundManager : MonoBehaviour
     private Sprite[] bgSprites, bgSkySprites, tileSprites, tile2Sprites, moons;
 
     [SerializeField]
-    GameObject[] monsterSpawner;
+    GameObject[] monsterSpawner, Torch;
 
     [SerializeField]
     private SpriteRenderer bgSpriteRenderer, bgSkySpriteRenderer, tileSpriteRenderer, tiledowngroundSpriteRenderer, moonSpriteRenderer;
@@ -22,10 +22,12 @@ public class BackgroundManager : MonoBehaviour
             if (i == PlayerPrefs.GetInt("BackgroundActive"))
             {
                 monsterSpawner[i].SetActive(true);
+                Torch[i].SetActive(true);
             }
             else
             {
                 monsterSpawner[i].SetActive(false);
+                Torch[i].SetActive(false);
             }
         }
         moonSpriteRenderer.sprite = moons[PlayerPrefs.GetInt("BackgroundActive")];

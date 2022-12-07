@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  destroyTimerA: 10
-  destroyTimerB: 15
+  destroyTimerA: 5
+  destroyTimerB: 7
 --- !u!1 &8984643431100813439
 GameObject:
   m_ObjectHideFlags: 0

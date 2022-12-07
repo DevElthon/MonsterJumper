@@ -28,9 +28,9 @@ public class ColectablesSpawn : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(6, 14));
+            yield return new WaitForSeconds(Random.Range(6, 10));
 
-            if (PlayerPrefs.GetInt("Tutorial") == 2)
+            if (PlayerPrefs.GetInt("Tutorial") == 3)
             {
                 randomIndex = Random.Range(0, colectableReference.Length);
                 randomSide = Random.Range(0, 2);
@@ -56,8 +56,8 @@ public class ColectablesSpawn : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(3, 6));
-            if (PlayerPrefs.GetInt("Tutorial") == 2)
+            yield return new WaitForSeconds(Random.Range(6, 10));
+            if (PlayerPrefs.GetInt("Tutorial") == 3)
             {
                 int RandomCoin = Random.Range(0, coinsObj.Length);
                 randomSide = Random.Range(0, 2);

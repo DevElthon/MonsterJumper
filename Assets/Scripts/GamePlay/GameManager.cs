@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
+    float scoreMath;
     [HideInInspector]
     public static GameManager instance;
     public int lifeCount = 1;
@@ -82,11 +83,14 @@ public class GameManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (inGame)
+        if (inGame && PlayerPrefs.GetInt("Tutorial") == 3)
         {
             timer += Time.deltaTime;
-            if (Time.timeScale == 1 && PlayerPrefs.GetInt("Tutorial") == 2)
-                currentScore += (1 + (1 * (int)((timer) * 1f))) * dubPoints;
+            if (Time.timeScale == 1)
+            {
+                scoreMath = (1000 * Time.deltaTime) * dubPoints;
+                currentScore += 1 + (int)scoreMath;
+            }
         }
     }
 

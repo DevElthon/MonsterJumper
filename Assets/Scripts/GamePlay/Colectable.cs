@@ -32,7 +32,6 @@ public class Colectable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(WALL_TAG) || collision.gameObject.CompareTag(PLAYER_TAG))
         {
-            AudioManager.Instance.Play(AudioManager.Instance.sfx[1]);
             Destroy(gameObject);
         }
     }

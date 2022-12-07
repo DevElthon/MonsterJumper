@@ -36,6 +36,7 @@ public class PlayerColectableEffects : MonoBehaviour
         {
             GameManager.instance.dubPTimer = 0;
             GameManager.instance.pointactive = true;
+            AudioManager.Instance.Play(AudioManager.Instance.sfx[1]);
         }
 
         //Double Coins
@@ -43,6 +44,7 @@ public class PlayerColectableEffects : MonoBehaviour
         {
             GameManager.instance.dubCTimer = 0;
             GameManager.instance.coinactive = true;
+            AudioManager.Instance.Play(AudioManager.Instance.sfx[1]);
         }
 
         //Invencible
@@ -51,6 +53,7 @@ public class PlayerColectableEffects : MonoBehaviour
             GameManager.instance.invencible = true;
             GameManager.instance.invTimer = 0;
             GameManager.instance.invactive = true;
+            AudioManager.Instance.Play(AudioManager.Instance.sfx[1]);
         }
     }
 

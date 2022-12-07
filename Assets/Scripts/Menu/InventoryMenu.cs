@@ -108,9 +108,14 @@ public class InventoryMenu : MonoBehaviour
             locks[3].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("Char5Unlocked") == 1 && locks[4].activeSelf)
+        if (PlayerPrefs.GetInt("Char4Unlocked") == 1 && locks[4].activeSelf)
         {
             locks[4].SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("Char5Unlocked") == 1 && locks[5].activeSelf)
+        {
+            locks[5].SetActive(false);
         }
     }
 

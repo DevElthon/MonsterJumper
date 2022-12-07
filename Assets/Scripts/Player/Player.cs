@@ -183,6 +183,11 @@ public class Player : MonoBehaviour
             AudioManager.Instance.Play(AudioManager.Instance.sfx[3]);
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Tutorial3Check"))
+        {
+            PlayerPrefs.SetInt("Tutorial", 3);
+        }
     }
     
     private void OnDestroy()

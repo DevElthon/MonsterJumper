@@ -8,7 +8,13 @@ public class TutorialController : MonoBehaviour
     // principal: mostrar como se movimentar
     // Indicar que não é para encostar nos monstros
     [SerializeField]
-    private GameObject rightTutorial, leftTutorial;
+    private GameObject rightTutorial, leftTutorial, zombiePrefab, message;
+
+    [SerializeField]
+    Transform spawnLefttransform;
+
+    private GameObject spawnZombie;
+    bool zombieActive = false;
 
     public static float RightTimer = 0;
     public static float LeftTimer = 0;
@@ -16,11 +22,17 @@ public class TutorialController : MonoBehaviour
     private void Awake()
     {
         //PlayerPrefs.SetInt("Tutorial", 0 );
-        if(PlayerPrefs.GetInt("Tutorial") == 2)
+        if(PlayerPrefs.GetInt("Tutorial") == 3)
         {
             rightTutorial.SetActive(false);
             leftTutorial.SetActive(false);
             this.gameObject.GetComponent<TutorialController>().enabled = false;
+        }
+
+        else
+        {
+            PlayerPrefs.SetInt("Tutorial", 0);
+            zombieActive = false;
         }
     }
 
@@ -63,11 +75,28 @@ public class TutorialController : MonoBehaviour
             PlayerPrefs.SetInt("Tutorial", 2);
             leftTutorial.SetActive(false);
         }
+
+        if(PlayerPrefs.GetInt("Tutorial") == 2 && !zombieActive && !rightTutorial.activeSelf && !leftTutorial.activeSelf)
+        {
+            zombieActive = true;
+            spawnZombie = Instantiate(zombiePrefab);
+            spawnZombie.transform.position = new Vector3(spawnLefttransform.position.x + 4, spawnZombie.transform.position.y, spawnZombie.transform.position.z);
+            spawnZombie.GetComponent<Monster>().speed = 3;
+            message.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     private void Update()
     {
-        if(PlayerPrefs.GetInt("Tutorial") == 2 && rightTutorial.activeSelf)
+        if(PlayerPrefs.GetInt("Tutorial") != 3 && PlayerPrefs.GetInt("Tutorial") != 0)
+        {
+            RightTimer = 0;
+            PlayerPrefs.SetInt("Tutorial", 0);
+            LeftTimer = 0;
+        }
+
+        if(PlayerPrefs.GetInt("Tutorial") == 1 && rightTutorial.activeSelf)
         {
             rightTutorial.SetActive(false);
         }
@@ -76,5 +105,17 @@ public class TutorialController : MonoBehaviour
         {
             leftTutorial.SetActive(false);
         }
+
+        if(PlayerPrefs.GetInt("Tutorial") == 3 && zombieActive)
+        {
+            Destroy(spawnZombie);
+            zombieActive = false;
+        }
+    }
+
+    public void ExitMessage()
+    {
+        message.SetActive(false);
+        Time.timeScale = 1;
     }
 }

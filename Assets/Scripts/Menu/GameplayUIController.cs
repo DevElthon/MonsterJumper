@@ -166,6 +166,7 @@ public class GameplayUIController : MonoBehaviour
         GameManager.instance.dubPTimer = 0;
         GameManager.instance.dubPoints = 1;
         GameManager.instance.dubCoins = 1;
+        GameManager.instance.timer = 0;
         GameManager.instance.invTimer = 0;
         GameManager.instance.invencible = false;
 
@@ -173,6 +174,7 @@ public class GameplayUIController : MonoBehaviour
         GameManager.instance.pointactive = false;
         GameManager.instance.invactive = false;
         GameManager.instance.doubledCoins = false;
+        GameManager.instance.maxTimer = 15f;
 
         dubCFeed.gameObject.SetActive(false);
         dubPFeed.gameObject.SetActive(false);

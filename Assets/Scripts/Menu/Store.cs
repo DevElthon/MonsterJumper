@@ -30,7 +30,7 @@ public class Store : MonoBehaviour
 
     [Header("Characters")]
     [SerializeField]
-    private GameObject char1lock, char2lock, char3lock, char5lock, characterPanel;
+    private GameObject char1lock, char2lock, char3lock, char4lock, char5lock, characterPanel;
     [SerializeField]
     private Button UpgradePanelBtn;
 
@@ -70,6 +70,9 @@ public class Store : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("Char3Unlocked"))
             PlayerPrefs.SetInt("Char3Unlocked", 0);
+
+        if (!PlayerPrefs.HasKey("Char4Unlocked"))
+            PlayerPrefs.SetInt("Char4Unlocked", 0);
 
         if (!PlayerPrefs.HasKey("Char5Unlocked"))
             PlayerPrefs.SetInt("Char5Unlocked", 0);
@@ -273,6 +276,15 @@ public class Store : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 4000);
             PlayerPrefs.SetInt("Char3Unlocked", 1);
+        }
+    }
+
+    public void OnBuyChar4Clicked()
+    {
+        if (PlayerPrefs.GetInt("Coins") >= 6000 && PlayerPrefs.GetInt("Char4Unlocked") == 0)
+        {
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 6000);
+            PlayerPrefs.SetInt("Char4Unlocked", 1);
         }
     }
 

@@ -12,6 +12,7 @@ TagManager:
   - Limit
   - Ground
   - UIController
+  - Tutorial3Check
   layers:
   - Default
   - TransparentFX

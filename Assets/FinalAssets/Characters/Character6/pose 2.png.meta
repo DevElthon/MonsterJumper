@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 433a55fd1dbb12a49bd0e23447ca25da
+guid: 1b5b88b4939235049838d03b5aaf7e68
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -139,40 +139,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: pose 2_0
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 2
-        width: 202
-        height: 277
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76bcd89ae272b0c4dbddbf73a64b842c
-      internalID: 1477108694
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d3799298865fc9d42a24122ae4c5dbc1
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      pose 2_0: 1477108694
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

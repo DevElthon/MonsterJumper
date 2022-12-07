@@ -7,7 +7,7 @@ using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
-    [SerializeField] GameObject charOptionsPanel, optionsPanel, storePanel, loadingScreen, inventoryPanel, creditsPanel;
+    [SerializeField] GameObject charOptionsPanel, optionsPanel, storePanel, cashStorePanel, loadingScreen, inventoryPanel, creditsPanel;
     [SerializeField] TextMeshProUGUI highscore;
     [SerializeField] TextMeshProUGUI Coins;
     [SerializeField] Image loadingBArFill;
@@ -93,6 +93,16 @@ public class MainMenuController : MonoBehaviour
         BackgroundStore.backgroundIndex = 0;
     }
 
+    public void OnClickCashStore()
+    {
+        cashStorePanel.SetActive(true);
+    }
+
+    public void OnExitCashStoreclicked()
+    {
+        cashStorePanel.SetActive(false);
+    }
+
     public void OnInventoryClicked()
     {
         inventoryPanel.SetActive(true);
@@ -118,6 +128,7 @@ public class MainMenuController : MonoBehaviour
         PlayerPrefs.SetInt("Char1Unlocked", 0);
         PlayerPrefs.SetInt("Char2Unlocked", 0);
         PlayerPrefs.SetInt("Char3Unlocked", 0);
+        PlayerPrefs.SetInt("Char4Unlocked", 0);
         PlayerPrefs.SetInt("Char5Unlocked", 0);
         PlayerPrefs.SetInt("Tutorial", 0);
         PlayerPrefs.SetInt("HighScore", 0);
@@ -125,6 +136,9 @@ public class MainMenuController : MonoBehaviour
         PlayerPrefs.SetInt("Background1", 0);
         PlayerPrefs.SetInt("Background2", 0);
         SceneManager.LoadScene("MainMenu");
+        GameManager.instance.CharIndex = 0;
+        TutorialController.LeftTimer = 0;
+        TutorialController.RightTimer = 0;
     }
 
     public void HackTheGame()
