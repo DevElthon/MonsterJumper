@@ -8780,8 +8780,11 @@ MonoBehaviour:
   leftTutorial: {fileID: 119260571}
   zombiePrefab: {fileID: 3153795867337482509, guid: 00fc30bdfbc669b40a56af9e2cf99065,
     type: 3}
+  skeletonPrefab: {fileID: 2269082555443197943, guid: 017a4ae32388c3a4cafa118acacc013f,
+    type: 3}
   message: {fileID: 1498186204}
   spawnLefttransform: {fileID: 1570232014}
+  spawnRightTransform: {fileID: 1918609920}
 --- !u!1 &1040235058
 GameObject:
   m_ObjectHideFlags: 0

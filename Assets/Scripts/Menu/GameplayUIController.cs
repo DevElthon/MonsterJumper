@@ -82,7 +82,7 @@ public class GameplayUIController : MonoBehaviour
     private void LateUpdate()
     {
         //ContinuePanel control
-        if (playerIsDead == true && !continuePanel.activeSelf && !deathPanel.activeSelf && GameManager.instance.lifeCount == 1)
+        if (PlayerPrefs.GetInt("Tutorial") == 3 && playerIsDead == true && !continuePanel.activeSelf && !deathPanel.activeSelf && GameManager.instance.lifeCount == 1)
         {
             continuePanel.SetActive(true);
             GameManager.instance.inGame = false;
@@ -99,6 +99,12 @@ public class GameplayUIController : MonoBehaviour
             AudioManager.Instance.Play(AudioManager.Instance.sfx[4]);
             AudioManager.Instance.PlayMusic(AudioManager.Instance.tracks[1]);
         }   
+
+        if(PlayerPrefs.GetInt("Tutorial") < 3 && playerIsDead == true && !deathPanel.activeSelf)
+        {
+            deathPanel.SetActive(true);
+            GameManager.instance.inGame = false;
+        }
     }
 
     public void ActiveHabilitiesFeed()

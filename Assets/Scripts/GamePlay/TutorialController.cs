@@ -8,12 +8,12 @@ public class TutorialController : MonoBehaviour
     // principal: mostrar como se movimentar
     // Indicar que não é para encostar nos monstros
     [SerializeField]
-    private GameObject rightTutorial, leftTutorial, zombiePrefab, message;
+    private GameObject rightTutorial, leftTutorial, zombiePrefab, skeletonPrefab, message;
 
     [SerializeField]
-    Transform spawnLefttransform;
+    Transform spawnLefttransform, spawnRightTransform;
 
-    private GameObject spawnZombie;
+    private GameObject spawnZombie, spawnSkeleton;
     bool zombieActive = false;
 
     public static float RightTimer = 0;
@@ -82,6 +82,11 @@ public class TutorialController : MonoBehaviour
             spawnZombie = Instantiate(zombiePrefab);
             spawnZombie.transform.position = new Vector3(spawnLefttransform.position.x + 4, spawnZombie.transform.position.y, spawnZombie.transform.position.z);
             spawnZombie.GetComponent<Monster>().speed = 3;
+
+            spawnSkeleton = Instantiate(skeletonPrefab);
+            spawnSkeleton.transform.position = new Vector3(spawnRightTransform.position.x, spawnSkeleton.transform.position.y, spawnSkeleton.transform.position.z);
+            spawnSkeleton.transform.localScale = new Vector3(spawnSkeleton.transform.localScale.x * -1, spawnSkeleton.transform.localScale.y, spawnSkeleton.transform.localScale.z);
+            spawnSkeleton.GetComponent<Monster>().speed = -3;
             message.SetActive(true);
             Time.timeScale = 0;
         }
@@ -109,6 +114,7 @@ public class TutorialController : MonoBehaviour
         if(PlayerPrefs.GetInt("Tutorial") == 3 && zombieActive)
         {
             Destroy(spawnZombie);
+            Destroy(spawnSkeleton);
             zombieActive = false;
         }
     }
