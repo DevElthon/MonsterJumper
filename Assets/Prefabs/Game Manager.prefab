@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2703521393675218729}
   - component: {fileID: 2703521393675218730}
+  - component: {fileID: 560541171}
+  - component: {fileID: 8502160666848612738}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -48,10 +50,13 @@ MonoBehaviour:
   timer: 0
   maxTimer: 15
   characters:
-  - {fileID: 3604003048841260953, guid: 50ed466a9df504af5a69feb3de6b8c99, type: 3}
-  - {fileID: 5459114217101396401, guid: 7547265ffa70940139556edb79dc9063, type: 3}
-  - {fileID: 5459114217101396401, guid: 938fd3dd069ab5e4595baf75c70c23ff, type: 3}
-  - {fileID: 5459114217101396401, guid: b32365f121488674ca982dd5829a07eb, type: 3}
+  - {fileID: 3604003048841260953, guid: d6c7aa7af2d135b41b8fd3b23b8332ba, type: 3}
+  - {fileID: 3604003048841260953, guid: 7c25415a31d09914e87baa4d25776912, type: 3}
+  - {fileID: 3604003048841260953, guid: dcd922326e6ff0d4caf999862c705d11, type: 3}
+  - {fileID: 3604003048841260953, guid: a322a842fe0d3854fac14985a630ace4, type: 3}
+  - {fileID: 3604003048841260953, guid: f80b5e2c02c6b844db87ccdcf3507565, type: 3}
+  - {fileID: 3604003048841260953, guid: ce1f81f105db523469acd16778ab4ca8, type: 3}
+  CharIndex: 0
   currentScore: 0
   coins: 0
   inGame: 0
@@ -67,3 +72,48 @@ MonoBehaviour:
   coinactive: 0
   pointactive: 0
   invactive: 0
+  doubledCoins: 0
+--- !u!114 &560541171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2703521393675218731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7dd963c1a8b427b96975fa211478a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumePurchase: 1
+  dontDestroyOnLoad: 1
+  onPurchaseComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CashStoreManager, Assembly-CSharp
+        m_MethodName: onPurchaseComplete
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8502160666848612738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2703521393675218731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65861fb7180f04a4ebc58f595b960c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

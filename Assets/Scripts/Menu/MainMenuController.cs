@@ -26,6 +26,11 @@ public class MainMenuController : MonoBehaviour
         Coins.text = PlayerPrefs.GetInt("Coins").ToString();
     }
 
+    public void ShowAchievmentsUI()
+    {
+        PlayServices.ShowAchievments();
+    }
+
     public void LoadScene(int sceneId)
     {
         StartCoroutine(LoadSceneAsync(sceneId));
@@ -50,17 +55,6 @@ public class MainMenuController : MonoBehaviour
             yield return null;
         }
     }
-
-    /*
-    public void OnClickPlay()
-    {
-        charOptionsPanel.SetActive(true);
-    }
-    public void OnClickExitPlay()
-    {
-        charOptionsPanel.SetActive(false);
-    }
-    */
 
     public void OnClickOptions()
     {
