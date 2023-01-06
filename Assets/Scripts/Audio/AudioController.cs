@@ -14,10 +14,15 @@ public class AudioController : MonoBehaviour
 	private void Start()
 	{
 		audiomanagerInstance = AudioManager.Instance;
+		if(PlayerPrefs.GetFloat("fxVolume") != 0f && PlayerPrefs.GetFloat("trackVolume") != 0)
+        {
+			PlayerPrefs.SetFloat("fxVolume", 0.7f);
+			PlayerPrefs.SetFloat("trackVolume", 0.5f);
+		}
 
 		if (!PlayerPrefs.HasKey("trackVolume"))
 		{
-			PlayerPrefs.SetFloat("trackVolume", 1);
+			PlayerPrefs.SetFloat("trackVolume", 0.5f);
 			LoadTrack();
 		}
 		else
@@ -27,7 +32,7 @@ public class AudioController : MonoBehaviour
 
 		if (!PlayerPrefs.HasKey("fxVolume"))
 		{
-			PlayerPrefs.SetFloat("fxVolume", 1);
+			PlayerPrefs.SetFloat("fxVolume", 0.7f);
 			LoadFx();
 		}
 		else
@@ -41,27 +46,27 @@ public class AudioController : MonoBehaviour
         if(fxvolume == 0 && desactivedsfx.activeSelf == false)
 			desactivedsfx.SetActive(true);
 
-		else if(fxvolume == 1 && desactivedsfx.activeSelf == true)
+		else if(fxvolume == 0.7f && desactivedsfx.activeSelf == true)
 			desactivedsfx.SetActive(false);
 
 		if(trackvolume == 0 && desactivedtrack.activeSelf == false)
 			desactivedtrack.SetActive(true);
 
-		else if(trackvolume == 1 && desactivedtrack.activeSelf == true)
+		else if(trackvolume == 0.5f && desactivedtrack.activeSelf == true)
 			desactivedtrack.SetActive(false);
 	}
 
 	//track section
     public void ChangeTrackVolume()
 	{
-		if (trackvolume == 1)
+		if (trackvolume == 0.5f)
 		{
 			trackvolume = 0;
 			audiomanagerInstance.trackSource.volume = trackvolume;
 		}
 		else if (trackvolume == 0)
 		{
-			trackvolume = 1;
+			trackvolume = 0.5f;
 			audiomanagerInstance.trackSource.volume = trackvolume;
 		}
 		SaveTrack();
@@ -81,7 +86,7 @@ public class AudioController : MonoBehaviour
 	//Fx section
 	public void ChangeFxVolume()
 	{
-		if (fxvolume == 1)
+		if (fxvolume == 0.7f)
 		{
 			fxvolume = 0;
 			
@@ -89,7 +94,7 @@ public class AudioController : MonoBehaviour
 		}
 		else if (fxvolume == 0)
 		{
-			fxvolume = 1;
+			fxvolume = 0.7f;
 			audiomanagerInstance.fxSource.volume = fxvolume;
 		}
 		SaveFx();

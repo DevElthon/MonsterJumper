@@ -133,8 +133,6 @@ public class BackgroundStore : MonoBehaviour
             {
                 PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 5000);
                 PlayerPrefs.SetInt("Background1", 1);
-                PlayServices.UnlockAchievment(MonsterJumperServices.achievement_first_purchase);
-                PlayServices.UnlockAchievment(MonsterJumperServices.achievement_christmas_map_unlocked);
             }
         }
         if (background == 2)
@@ -143,8 +141,6 @@ public class BackgroundStore : MonoBehaviour
             {
                 PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 10000);
                 PlayerPrefs.SetInt("Background2", 1);
-                PlayServices.UnlockAchievment(MonsterJumperServices.achievement_first_purchase);
-                PlayServices.UnlockAchievment(MonsterJumperServices.achievement_castle_dungeon_unlocked);
             }
         }
         /*

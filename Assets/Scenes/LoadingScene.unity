@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 43, y: 42}
-  m_SizeDelta: {x: 859.48, y: 211.62}
+  m_AnchoredPosition: {x: -2.261, y: -218}
+  m_SizeDelta: {x: 1223.411, y: 211.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &290085957
 MonoBehaviour:
@@ -182,7 +182,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d93a76ca2a7bde34b9c6ce9beeb91a3d, type: 3}
+    m_Font: {fileID: 12800000, guid: c0e4e564374d34b43b7d8385cfd87894, type: 3}
     m_FontSize: 150
     m_FontStyle: 1
     m_BestFit: 1
@@ -407,8 +407,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -8.47229}
-  m_SizeDelta: {x: 0, y: 0.00012207031}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &627921535
 MonoBehaviour:
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18666548d9a92284587cc455e5f86bbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ed72c81f0d7cc6408e3339bb2fa9e8f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -497,7 +497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.926, y: -136.904}
+  m_AnchoredPosition: {x: -2.926, y: -396.904}
   m_SizeDelta: {x: 1240.148, y: 80.843}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &722780265
@@ -742,7 +742,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959408537}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -721.6, y: -63, z: 0}
+  m_LocalPosition: {x: -721.6, y: -323, z: 0}
   m_LocalScale: {x: 97.828735, y: 97.828735, z: 97.828735}
   m_ConstrainProportionsScale: 0
   m_Children: []

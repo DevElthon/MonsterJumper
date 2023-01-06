@@ -29,7 +29,7 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
             LoadAd();
         }
 
-        if(MainMenuController.adCount == 6)
+        if(MainMenuController.adCount == 4)
         {
             ShowAd();
         }

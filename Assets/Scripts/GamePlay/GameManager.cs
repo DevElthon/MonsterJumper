@@ -79,6 +79,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Tutorial", 0);
 
         CharIndex = PlayerPrefs.GetInt("CharacterActive");
+        if (!PlayerPrefs.HasKey("TotalCoins"))
+            PlayerPrefs.SetInt("TotalCoins", 0);
     }
 
     private void LateUpdate()
@@ -141,6 +143,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", GameManager.instance.currentScore);
 
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + coins);
+        PlayerPrefs.SetInt("TotalCoins", PlayerPrefs.GetInt("TotalCoins") + coins);
     }
 
     public void CoinstimeEffects()

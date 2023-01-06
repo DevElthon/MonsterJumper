@@ -44,4 +44,22 @@ public class PlayServices : MonoBehaviour
     {
         Social.ShowAchievementsUI();
     }
+
+    public static void PostScore(long score, string leaderBoard)
+    {
+        Social.ReportScore(score, leaderBoard, (sucess => { }));
+    }
+
+    public static void ShowLeaderboard(string leaderBoard)
+    {
+        PlayGamesPlatform.Instance.ShowLeaderboardUI(leaderBoard);
+    }
+
+    public static long GetPlayerScore(string leaderBoard)
+    {
+        long score = 0;
+        PlayGamesPlatform.Instance.LoadScores(leaderBoard, LeaderboardStart.PlayerCentered, 1, LeaderboardCollection.Public,
+            LeaderboardTimeSpan.AllTime, (LeaderboardScoreData data) => { score = data.PlayerScore.value; });
+        return score;
+    }
 }

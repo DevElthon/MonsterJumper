@@ -14,6 +14,8 @@ public class GameplayUIController : MonoBehaviour
     private TextMeshProUGUI score;
     [SerializeField]
     private TextMeshProUGUI coin;
+    [SerializeField]
+    private GameObject NewScore;
 
     [Header("Text scores On GameOver")]
     [SerializeField] Text highscore;
@@ -39,6 +41,12 @@ public class GameplayUIController : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.instance.currentScore > PlayerPrefs.GetInt("HighScore"))
+        {
+            NewScore.SetActive(true);
+            PlayerPrefs.SetInt("HighScore", GameManager.instance.currentScore);
+        }
+
         //text feed
         score.text = GameManager.instance.currentScore.ToString();
         coin.text = GameManager.instance.coins.ToString();

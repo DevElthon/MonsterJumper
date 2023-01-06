@@ -258,8 +258,6 @@ public class Store : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 1000);
             PlayerPrefs.SetInt("Char1Unlocked", 1);
-            PlayServices.UnlockAchievment(MonsterJumperServices.achievement_first_purchase);
-            PlayServices.UnlockAchievment(MonsterJumperServices.achievement_jaime_unlocked);
         }
     }
 
@@ -269,8 +267,6 @@ public class Store : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 2000);
             PlayerPrefs.SetInt("Char2Unlocked", 1);
-            PlayServices.UnlockAchievment(MonsterJumperServices.achievement_first_purchase); 
-            PlayServices.UnlockAchievment(MonsterJumperServices.achievement_billy_unlocked);
         }
     }
 
@@ -280,8 +276,6 @@ public class Store : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 4000);
             PlayerPrefs.SetInt("Char3Unlocked", 1);
-            PlayServices.UnlockAchievment(MonsterJumperServices.achievement_first_purchase);
-            PlayServices.UnlockAchievment(MonsterJumperServices.achievement_chester_unlocked);
         }
     }
 
@@ -291,8 +285,6 @@ public class Store : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 6000);
             PlayerPrefs.SetInt("Char4Unlocked", 1);
-            PlayServices.UnlockAchievment(MonsterJumperServices.achievement_first_purchase);
-            PlayServices.UnlockAchievment(MonsterJumperServices.achievement_dullahan_unlocked);
         }
     }
 
@@ -302,8 +294,6 @@ public class Store : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 8000);
             PlayerPrefs.SetInt("Char5Unlocked", 1);
-            PlayServices.UnlockAchievment(MonsterJumperServices.achievement_first_purchase);
-            PlayServices.UnlockAchievment(MonsterJumperServices.achievement_gerard_unlocked);
         }
     }
 
