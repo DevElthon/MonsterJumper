@@ -25,7 +25,7 @@ public class MainMenuController : MonoBehaviour
         highscore.text = PlayerPrefs.GetInt("HighScore").ToString();
         Coins.text = PlayerPrefs.GetInt("Coins").ToString();
 
-        if(PlayerPrefs.GetInt("HighScore") > PlayServices.GetPlayerScore(MonsterJumperServices.leaderboard_ranking))
+        if (PlayerPrefs.GetInt("HighScore") > PlayServices.GetPlayerScore(MonsterJumperServices.leaderboard_ranking))
         {
             PlayServices.PostScore((long)PlayerPrefs.GetInt("HighScore"), MonsterJumperServices.leaderboard_ranking);
         }

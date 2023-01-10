@@ -12,14 +12,31 @@ public class CashStoreManager : MonoBehaviour
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 10000);
         }
 
-        if (product.definition.id.Equals("coinspack2"))
+        else if (product.definition.id.Equals("coinspack2"))
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 30000);
         }
 
-        if (product.definition.id.Equals("coinspack3"))
+        else if (product.definition.id.Equals("coinspack3"))
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 60000);
         }
+
+        else if (product.definition.id.Equals("dullahanpack"))
+        {
+            PlayerPrefs.SetInt("Char4Unlocked", 1);
+            PlayerPrefs.SetInt("Background2", 1);
+            PlayerPrefs.Save();
+        }
+
+        else if (product.definition.id.Equals("maxupgrade"))
+        {
+            PlayerPrefs.SetInt("PointsLevel", 3);
+            PlayerPrefs.SetInt("CoinsLevel", 3);
+            PlayerPrefs.SetInt("InvLevel", 3);
+            PlayerPrefs.Save();
+        }
+
+        PlayServices.UnlockAchievment(MonsterJumperServices.achievement_cash_knight);
     }
 }

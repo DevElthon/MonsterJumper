@@ -49,6 +49,12 @@ public class Store : MonoBehaviour
     [SerializeField]
     private GameObject backgroundsPanel;
 
+    [Header("Cash Store")]
+    [SerializeField]
+    GameObject cashStorePanel, dullapackBTn, dullapacksold, maxupbtn, maxupsold;
+    [SerializeField]
+    private Button cashStorePanelBtn;
+
     private void Awake()
     {
         //Colectables
@@ -89,12 +95,12 @@ public class Store : MonoBehaviour
         //Coins Level
         if (PlayerPrefs.GetInt("CoinsLevel") >= 1 && coinlevel2Check.activeSelf == false)
         {
-            upgrade1.text = "Upgrade: \n2000";
+            upgrade1.text = "ATUALIZAR: 2000";
             coinlevel2Check.SetActive(true);
         }
         if (PlayerPrefs.GetInt("CoinsLevel") >= 2 && coinlevel3Check.activeSelf == false)
         {
-            upgrade1.text = "Upgrade: \n4000";
+            upgrade1.text = "ATUALIZAR: 4000";
             coinlevel2Check.SetActive(true);
             coinlevel3Check.SetActive(true);
         }
@@ -108,12 +114,12 @@ public class Store : MonoBehaviour
         //Points Level
         if (PlayerPrefs.GetInt("PointsLevel") >= 1 && pointslevel2Check.activeSelf == false)
         {
-            upgrade2.text = "Upgrade: \n2000";
+            upgrade2.text = "ATUALIZAR: 2000";
             pointslevel2Check.SetActive(true);
         }
         if (PlayerPrefs.GetInt("PointsLevel") >= 2 && pointslevel3Check.activeSelf == false )
         {
-            upgrade2.text = "Upgrade: \n4000";
+            upgrade2.text = "ATUALIZAR: 4000";
             pointslevel3Check.SetActive(true);
         }
         if (PlayerPrefs.GetInt("PointsLevel") >= 3 && pointslevel4Check.activeSelf == false)
@@ -125,12 +131,12 @@ public class Store : MonoBehaviour
         //Invencible Level
         if (PlayerPrefs.GetInt("InvLevel") >= 1 && invlevel2Check.activeSelf == false)
         {
-            upgrade3.text = "Upgrade: \n2000";
+            upgrade3.text = "ATUALIZAR: 2000";
             invlevel2Check.SetActive(true);
         }
         if (PlayerPrefs.GetInt("InvLevel") >= 2 && invlevel3Check.activeSelf == false)
         {
-            upgrade3.text = "Upgrade: \n4000";
+            upgrade3.text = "ATUALIZAR: 4000";
             invlevel3Check.SetActive(true);
         }
         if (PlayerPrefs.GetInt("InvLevel") >= 3 && invlevel4Check.activeSelf == false)
@@ -152,6 +158,26 @@ public class Store : MonoBehaviour
         if (PlayerPrefs.GetInt("Char3Unlocked") == 1 && char3lock.activeSelf == true)
         {
             char3lock.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("Char4Unlocked") == 1 && char4lock.activeSelf == true)
+        {
+            char4lock.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("Char5Unlocked") == 1 && char5lock.activeSelf == true)
+        {
+            char5lock.SetActive(false);
+        }
+
+        //Pacotes
+        if (PlayerPrefs.GetInt("Char4Unlocked") == 1 && PlayerPrefs.GetInt("Background2") == 1 && !dullapacksold.activeSelf)
+        {
+            dullapackBTn.SetActive(false);
+            dullapacksold.SetActive(true);
+        }
+        if(PlayerPrefs.GetInt("PointsLevel") >= 3 && PlayerPrefs.GetInt("InvLevel") >= 3 && PlayerPrefs.GetInt("CoinsLevel") >= 3 && !maxupsold.activeSelf)
+        {
+            maxupbtn.SetActive(false);
+            maxupsold.SetActive(true);
         }
 
         //CharPage
@@ -307,6 +333,8 @@ public class Store : MonoBehaviour
             charactersPanelBtn.interactable = false;
             UpgradePanelBtn.interactable = true;
             backgroundsPanelBtn.interactable = true;
+            cashStorePanel.SetActive(false);
+            cashStorePanelBtn.interactable = true;
         }
     }
 
@@ -320,6 +348,8 @@ public class Store : MonoBehaviour
             charactersPanelBtn.interactable = true;
             UpgradePanelBtn.interactable = false;
             backgroundsPanelBtn.interactable = true;
+            cashStorePanel.SetActive(false);
+            cashStorePanelBtn.interactable = true;
         }
     }
 
@@ -333,6 +363,23 @@ public class Store : MonoBehaviour
             charactersPanelBtn.interactable = true;
             UpgradePanelBtn.interactable = true;
             backgroundsPanelBtn.interactable = false;
+            cashStorePanel.SetActive(false);
+            cashStorePanelBtn.interactable = true;
+        }
+    }
+
+    public void PackClicked()
+    {
+        if (cashStorePanel.activeSelf == false)
+        {
+            upgradesPanel.SetActive(false);
+            characterPanel.SetActive(false);
+            backgroundsPanel.SetActive(false);
+            charactersPanelBtn.interactable = true;
+            UpgradePanelBtn.interactable = true;
+            backgroundsPanelBtn.interactable = true;
+            cashStorePanel.SetActive(true);
+            cashStorePanelBtn.interactable = false;
         }
     }
 }
