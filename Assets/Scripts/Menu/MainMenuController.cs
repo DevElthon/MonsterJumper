@@ -14,6 +14,9 @@ public class MainMenuController : MonoBehaviour
 
     public static int adCount = 0;
 
+    [SerializeField] Image loadingScreenImage;
+    [SerializeField] Sprite[] loadimagesopt;
+
     private void Start()
     {
         //PlayerPrefs.SetInt("Coins", 999999);
@@ -44,6 +47,8 @@ public class MainMenuController : MonoBehaviour
     public void LoadScene(int sceneId)
     {
         StartCoroutine(LoadSceneAsync(sceneId));
+        int rand = Random.Range(0, 2);
+        loadingScreenImage.sprite = loadimagesopt[rand];
     }
 
     IEnumerator LoadSceneAsync(int sceneId)
