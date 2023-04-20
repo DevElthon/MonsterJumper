@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Up Games
-  productName: Monster Jumper Test
+  companyName: Burnout Studios
+  productName: Jumper Game
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -136,7 +136,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.9.1
+  bundleVersion: 1.0.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -252,8 +252,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/eltho/Documents/UpGamesKey/TheWalkingJumperKey/UpUser.keystore
-  AndroidKeyaliasName: up
+  AndroidKeystoreName: C:/Users/eltho/Documents/BurnoutStudio/GameKeys/JumperKey.keystore
+  AndroidKeyaliasName: 
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
@@ -827,7 +827,7 @@ PlayerSettings:
     Collab: 0
     Game Performance: 0
     Legacy Analytics: 1
-    Purchasing: 1
+    Purchasing: 0
     UDP: 0
     Unity Ads: 1
   luminIcon:
@@ -844,11 +844,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 45e4a95d-e3f8-473b-820d-ca826a754d73
+  cloudProjectId: 89ad2649-f46a-4b37-929a-15b0fd20dbcb
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: The Walking Jump (1)
-  organizationId: upgame_s
+  projectName: Jumper Game
+  organizationId: burnout-studio
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

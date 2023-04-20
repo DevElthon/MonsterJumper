@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -379,7 +379,6 @@ GameObject:
   - component: {fileID: 627921534}
   - component: {fileID: 627921536}
   - component: {fileID: 627921535}
-  - component: {fileID: 627921537}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -448,18 +447,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627921533}
   m_CullTransparentMesh: 1
---- !u!114 &627921537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627921533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08697b990f01c4b4a8ffacc548444cab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &722780263
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1378722693
 Light:
   m_ObjectHideFlags: 0
