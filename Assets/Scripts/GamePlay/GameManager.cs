@@ -47,6 +47,12 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public float maxDubCTime = 4;
 
+    //Explosion
+    [SerializeField]
+    public float loading_explosion = 0;
+    [HideInInspector]
+    public float max_loading_explosion = 50;
+
     //Invencible
     [HideInInspector]
     public bool invencible = false;
@@ -90,9 +96,27 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             if (Time.timeScale == 1)
             {
-                scoreMath = (1000 * Time.deltaTime) * dubPoints;
+                scoreMath = (100 * (PlayerPrefs.GetInt("PointsLevel") + 1) * Time.deltaTime) * dubPoints;
                 currentScore += 1 + (int)scoreMath;
             }
+        }
+    }
+
+    private void Update() {
+
+        switch(PlayerPrefs.GetInt("ExplosionLevel")){
+            case 0:
+                max_loading_explosion = 50;
+                break;
+            case 1:
+                max_loading_explosion = 43;
+                break;
+            case 2:
+                max_loading_explosion = 37;
+                break;
+            case 3: 
+                max_loading_explosion = 30;
+                break;
         }
     }
 

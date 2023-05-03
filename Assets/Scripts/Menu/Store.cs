@@ -8,7 +8,7 @@ public class Store : MonoBehaviour
 {
     private GameManager gameManagerInstance;
 
-    [Header("Página de personagens na loja")]
+    [Header("Pagina de personagens na loja")]
     [SerializeField]
     private GameObject[] charPage;
     [SerializeField]
@@ -27,6 +27,10 @@ public class Store : MonoBehaviour
     [SerializeField]
     private GameObject invlevel2Check, invlevel3Check, invlevel4Check;
 
+    [Header("Explosion upgrade check")]
+    [SerializeField]
+    private GameObject explosionlevel2Check, explosionlevel3Check, explosionlevel4Check;
+
 
     [Header("Characters")]
     [SerializeField]
@@ -36,12 +40,12 @@ public class Store : MonoBehaviour
 
     [Header("Upgrade buttons")]
     [SerializeField]
-    private GameObject upgradeCoinBtn, upgradePointsBtn, upgradeInvBtn, upgradesPanel;
+    private GameObject upgradeCoinBtn, upgradePointsBtn, upgradeInvBtn, upgradeExplosionBtn, upgradesPanel;
     [SerializeField]
     private Button charactersPanelBtn;
 
     [Header("UpgradeBtn's price")]
-    [SerializeField] TextMeshProUGUI upgrade1, upgrade2, upgrade3;
+    [SerializeField] TextMeshProUGUI upgrade1, upgrade2, upgrade3, upgrade4;
 
     [Header("Backgrounds")]
     [SerializeField]
@@ -66,6 +70,10 @@ public class Store : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("InvLevel"))
             PlayerPrefs.SetInt("InvLevel", 0);
+
+        //Special Power
+        if (!PlayerPrefs.HasKey("ExplosionLevel"))
+            PlayerPrefs.SetInt("ExplosionLevel", 0);
 
         //Characters
         if (!PlayerPrefs.HasKey("Char1Unlocked"))
@@ -144,6 +152,24 @@ public class Store : MonoBehaviour
             invlevel4Check.SetActive(true);
             upgradeInvBtn.SetActive(false);
         }
+
+        //Explosion Level
+        if (PlayerPrefs.GetInt("ExplosionLevel") >= 1 && explosionlevel2Check.activeSelf == false)
+        {
+            upgrade4.text = "ATUALIZAR: 2000";
+            explosionlevel2Check.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("ExplosionLevel") >= 2 && explosionlevel3Check.activeSelf == false)
+        {
+            upgrade4.text = "ATUALIZAR: 4000";
+            explosionlevel3Check.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("ExplosionLevel") >= 3 && explosionlevel4Check.activeSelf == false)
+        {
+            explosionlevel4Check.SetActive(true);
+            upgradeExplosionBtn.SetActive(false);
+        }
+
 
         //Characters
         //Char1
@@ -275,6 +301,27 @@ public class Store : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 4000);
             PlayerPrefs.SetInt("InvLevel", PlayerPrefs.GetInt("InvLevel") + 1);
+        }
+    }
+
+    public void OnUpgradeExplosionClicked()
+    {
+        if (PlayerPrefs.GetInt("Coins") >= 1000 && PlayerPrefs.GetInt("ExplosionLevel") == 0)
+        {
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 1000);
+            PlayerPrefs.SetInt("ExplosionLevel", PlayerPrefs.GetInt("ExplosionLevel") + 1);
+        }
+
+        if (PlayerPrefs.GetInt("Coins") >= 2000 && PlayerPrefs.GetInt("ExplosionLevel") == 1 && explosionlevel2Check.activeSelf == true)
+        {
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 2000);
+            PlayerPrefs.SetInt("ExplosionLevel", PlayerPrefs.GetInt("ExplosionLevel") + 1);
+        }
+
+        if (PlayerPrefs.GetInt("Coins") >= 4000 && PlayerPrefs.GetInt("ExplosionLevel") == 2 && explosionlevel3Check.activeSelf == true)
+        {
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 4000);
+            PlayerPrefs.SetInt("ExplosionLevel", PlayerPrefs.GetInt("ExplosionLevel") + 1);
         }
     }
 

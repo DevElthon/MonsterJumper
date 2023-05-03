@@ -130,24 +130,7 @@ public class MainMenuController : MonoBehaviour
 
     public void ResetALLData()
     {
-        PlayerPrefs.SetInt("CoinsLevel", 0);
-        PlayerPrefs.SetInt("Coins", 0);
-        PlayerPrefs.SetInt("PointsLevel", 0);
-        PlayerPrefs.SetInt("InvLevel", 0);
-        PlayerPrefs.SetInt("Char1Unlocked", 0);
-        PlayerPrefs.SetInt("Char2Unlocked", 0);
-        PlayerPrefs.SetInt("Char3Unlocked", 0);
-        PlayerPrefs.SetInt("Char4Unlocked", 0);
-        PlayerPrefs.SetInt("Char5Unlocked", 0);
-        PlayerPrefs.SetInt("Tutorial", 0);
-        PlayerPrefs.SetInt("HighScore", 0);
-        PlayerPrefs.SetInt("BackgroundActive", 0);
-        PlayerPrefs.SetInt("Background1", 0);
-        PlayerPrefs.SetInt("Background2", 0);
-        SceneManager.LoadScene("MainMenu");
-        GameManager.instance.CharIndex = 0;
-        TutorialController.LeftTimer = 0;
-        TutorialController.RightTimer = 0;
+        PlayerPrefs.DeleteAll();
     }
 
     public void HackTheGame()

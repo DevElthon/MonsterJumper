@@ -13,6 +13,7 @@ TagManager:
   - Ground
   - UIController
   - Tutorial3Check
+  - Explosion
   layers:
   - Default
   - TransparentFX
@@ -55,6 +56,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1414049519
+    locked: 0
+  - name: Explosion
+    uniqueID: 440320035
     locked: 0
   - name: UI
     uniqueID: 3839181511

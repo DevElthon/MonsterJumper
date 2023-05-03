@@ -7,6 +7,13 @@ using TMPro;
 
 public class GameplayUIController : MonoBehaviour
 {
+    [Header("Explosion")]
+    [SerializeField]
+    private GameObject explosion_button;
+    [SerializeField] Button explosion_ref;
+    [SerializeField] Image loading_button_fill;
+
+
     [SerializeField] private Button rewardedButton;
 
     [Header("Text scores")]
@@ -26,7 +33,7 @@ public class GameplayUIController : MonoBehaviour
     [SerializeField]
     private GameObject pausePanel, deathPanel, continuePanel;
 
-    public static bool playerIsDead = false;
+    public static bool playerIsDead = false, player_may_die = false;
 
     [Header("FeedBack visual de habilidades")]
     [SerializeField] TextMeshProUGUI dubPFeed, dubCFeed;
@@ -80,17 +87,21 @@ public class GameplayUIController : MonoBehaviour
         if (GameManager.instance.inGame)
         {
             continuePanel.SetActive(false);
+            if(PlayerPrefs.GetInt("Tutorial") == 3 && !explosion_button.activeSelf){
+                explosion_button.SetActive(true);
+            }
         }
 
         //Methods to call
         ActiveHabilitiesFeed();
+        Explosion_Ready();
         RotateClock();
     }
 
     private void LateUpdate()
     {
         //ContinuePanel control
-        if (PlayerPrefs.GetInt("Tutorial") == 3 && playerIsDead == true && !continuePanel.activeSelf && !deathPanel.activeSelf && GameManager.instance.lifeCount == 1)
+        if (PlayerPrefs.GetInt("Tutorial") == 3 && player_may_die == true && !continuePanel.activeSelf && !deathPanel.activeSelf && GameManager.instance.lifeCount == 1)
         {
             continuePanel.SetActive(true);
             GameManager.instance.inGame = false;
@@ -112,6 +123,20 @@ public class GameplayUIController : MonoBehaviour
         {
             deathPanel.SetActive(true);
             GameManager.instance.inGame = false;
+        }
+    }
+
+    private void Explosion_Ready(){
+        if(GameManager.instance.loading_explosion <= GameManager.instance.max_loading_explosion){
+            GameManager.instance.loading_explosion += Time.deltaTime;
+            loading_button_fill.fillAmount = GameManager.instance.loading_explosion/GameManager.instance.max_loading_explosion;
+        }
+    
+        if(GameManager.instance.loading_explosion >= GameManager.instance.max_loading_explosion){
+            explosion_ref.interactable = true;
+        }
+        else{
+           explosion_ref.interactable = false;
         }
     }
 
@@ -171,6 +196,9 @@ public class GameplayUIController : MonoBehaviour
 
     public void ResetInGameInfo()
     {
+        player_may_die = false;
+        playerIsDead = false;
+        GameManager.instance.loading_explosion = 0;
         GameManager.instance.timer = 0;
         GameManager.instance.currentScore = 0;
         GameManager.instance.coins = 0;

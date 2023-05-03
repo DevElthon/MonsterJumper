@@ -8,6 +8,7 @@ public class LoadingScene : MonoBehaviour
     [SerializeField] Image loadingBArFill;
     void Start()
     {
+        //PlayerPrefs.DeleteAll();
         LoadScene(1);
     }
 

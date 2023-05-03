@@ -100,7 +100,6 @@ public class SecondRewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
             Debug.Log("Unity Ads Rewarded Ad Completed");
             if(GameManager.instance.lifeCount == 1)
             {
-                GameManager.instance.InstantiatePlayer();
                 GameManager.instance.invencible = true;
                 GameManager.instance.invTimer = 0;
                 GameManager.instance.invactive = true;

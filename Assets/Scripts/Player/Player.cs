@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D myBody;
     private SpriteRenderer sr;
     private Animator anim;
+    private Collider2D player_collider;
 
     private string WALK_ANIMATION = "Walk";
     private string GROUND_TAG = "Ground";
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        player_collider = GetComponent<Collider2D>();
     }
 
     void Update()
@@ -174,12 +176,18 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag(ENEMY_TAG) && GameManager.instance.invencible == false)
         {
-            Destroy(gameObject);
+            if(GameManager.instance.lifeCount==1){
+                GameplayUIController.player_may_die = true;
+                Time.timeScale = 0f;
+            }
+            else{
+                Destroy(gameObject);
+            }
         }
 
         else if (collision.gameObject.CompareTag(ENEMY_TAG) && GameManager.instance.invencible == true)
         {
-            GameManager.instance.currentScore += 1000 * PlayerPrefs.GetInt("PointsLevel");
+            GameManager.instance.currentScore += 100 * PlayerPrefs.GetInt("PointsLevel");
             AudioManager.Instance.Play(AudioManager.Instance.sfx[3]);
             Destroy(collision.gameObject);
         }
