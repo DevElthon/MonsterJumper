@@ -58,6 +58,14 @@ public class Store : MonoBehaviour
     GameObject cashStorePanel, dullapackBTn, dullapacksold, maxupbtn, maxupsold;
     [SerializeField]
     private Button cashStorePanelBtn;
+    
+    //info
+    [SerializeField] GameObject info_panel;
+    [SerializeField] TextMeshProUGUI info_text, info_title;
+
+    string[] Descriptions = new string[4]{"When this ability is active, all coins that you collect will be multiplied. When you upgrade this ability, your coins will be multiplied even more.", "When this ability is active, your points earned by jumping will be multiplied. When you upgrade this ability, your points will be multiplied even more.", "When this ability is active, monsters can't hurt you and will die when they touch you. When you upgrade this ability, your become invincible for a longer time.", "When you use this ability, create a great explosion that will kill nearby monsters. When you upgrade this ability, it will reload faster."};
+
+    string[] Abilities_title = new string[4]{"Multiply your coins","Multiply your points","Become invincible", "The great explosion"};
 
     private void Awake()
     {
@@ -428,5 +436,16 @@ public class Store : MonoBehaviour
             cashStorePanel.SetActive(true);
             cashStorePanelBtn.interactable = false;
         }
+    }
+
+    //Abilities Info
+    public void OpenInfo(int ability_index){
+        info_panel.SetActive(true);
+        info_text.text = Descriptions[ability_index];
+        info_title.text = Abilities_title[ability_index];
+    }
+
+    public void ExitInfo(){
+        info_panel.SetActive(false);
     }
 }

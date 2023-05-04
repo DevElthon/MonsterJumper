@@ -129,6 +129,7 @@ public class GameplayUIController : MonoBehaviour
     private void Explosion_Ready(){
         if(GameManager.instance.loading_explosion <= GameManager.instance.max_loading_explosion){
             GameManager.instance.loading_explosion += Time.deltaTime;
+            
             loading_button_fill.fillAmount = GameManager.instance.loading_explosion/GameManager.instance.max_loading_explosion;
         }
     
