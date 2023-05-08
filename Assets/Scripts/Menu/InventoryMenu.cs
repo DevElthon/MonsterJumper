@@ -2,11 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryMenu : MonoBehaviour
 {
     [SerializeField]
     private GameObject characterPanel, backgroundsPanel, arrowRight, arrowLeft;
+
+    [SerializeField]
+    private GameObject[] lore_info;
+    [SerializeField]
+    private GameObject lore_panel;
+    private string[] Lores = new string[6]{"Place Holder lore one.","Place Holder lore two.","Place Holder lore three.","Place Holder lore four.","Place Holder lore five.","Place Holder lore six."
+    };
+    private string[] Lores_Background = new string[3]{"Place Holder background lore one.","Place Holder background lore two.","Place Holder background lore three."
+    };
+    [SerializeField]
+    TextMeshProUGUI lore_text;
 
     [SerializeField]
     private Button charactersPanelBtn, backgroundsPanelBtn;
@@ -95,26 +107,31 @@ public class InventoryMenu : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Char1Unlocked") == 1 && locks[1].activeSelf)
         {
+            lore_info[1].SetActive(true);
             locks[1].SetActive(false);
         }
 
         if (PlayerPrefs.GetInt("Char2Unlocked") == 1 && locks[2].activeSelf)
         {
+            lore_info[2].SetActive(true);
             locks[2].SetActive(false);
         }
 
         if (PlayerPrefs.GetInt("Char3Unlocked") == 1 && locks[3].activeSelf)
         {
+            lore_info[3].SetActive(true);
             locks[3].SetActive(false);
         }
 
         if (PlayerPrefs.GetInt("Char4Unlocked") == 1 && locks[4].activeSelf)
         {
+            lore_info[4].SetActive(true);
             locks[4].SetActive(false);
         }
 
         if (PlayerPrefs.GetInt("Char5Unlocked") == 1 && locks[5].activeSelf)
         {
+            lore_info[5].SetActive(true);
             locks[5].SetActive(false);
         }
     }
@@ -194,5 +211,19 @@ public class InventoryMenu : MonoBehaviour
             GameManager.instance.CharIndex = PlayerPrefs.GetInt("CharacterActive");
             Debug.Log(GameManager.instance.CharIndex);
         }
+    }
+
+    public void Show_Lore(int index){
+        lore_panel.SetActive(true);
+        lore_text.text = Lores[index];
+    }
+
+    public void Show_Lore_Background(int index){
+        lore_panel.SetActive(true);
+        lore_text.text = Lores_Background[index];
+    }
+
+    public void Exit_Lore(){
+        lore_panel.SetActive(false);
     }
 }

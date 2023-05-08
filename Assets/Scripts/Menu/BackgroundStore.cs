@@ -11,6 +11,8 @@ public class BackgroundStore : MonoBehaviour
 
     [SerializeField]
     private GameObject[] selectedbackground, locks, equipsBTN;
+    [SerializeField]
+    private GameObject[] info_buttons;
     void Awake()
     {
         if (!PlayerPrefs.HasKey("BackgroundActive"))
@@ -116,11 +118,13 @@ public class BackgroundStore : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Background1") == 1 && locks[1].activeSelf)
         {
+            info_buttons[1].SetActive(true);
             locks[1].SetActive(false);
         }
 
         if (PlayerPrefs.GetInt("Background2") == 1 && locks[2].activeSelf)
         {
+            info_buttons[2].SetActive(true);
             locks[2].SetActive(false);
         }
     }
@@ -161,7 +165,7 @@ public class BackgroundStore : MonoBehaviour
         */
     }
 
-    //Deveria estar no invetoryMenu, mas sem tempo irmão
+    //Deveria estar no invetoryMenu, mas sem tempo irmï¿½o
     public void chooseBackgroundPlus()
     {
         backgroundIndex += 1;
