@@ -20,3 +20,6 @@ no Google Play Games, tanto para competição quanto para ganhar pontos de exper
 para o seu perfil. Tais sistemas foram desenvolvidos utilizando um plugin que 
 permite ao desenvolvedor acessar e desenvolver tais sistemas de forma eficiente.
 https://github.com/playgameservices/play-games-plugin-for-unity
+
+A versão mais recente do jogo está disponível no link abaixo:
+https://play.google.com/store/apps/details?id=com.upgames.monsterjumper.googleplay
