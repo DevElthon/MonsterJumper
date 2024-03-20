@@ -43,6 +43,6 @@ public static class MonsterJumperServices
         public const string achievement_christmas_map_unlocked = "CgkIu6mx_qkPEAIQBg"; // <GPGSID>
         public const string achievement_first_jump = "CgkIu6mx_qkPEAIQAA"; // <GPGSID>
         public const string achievement_dullahan_unlocked = "CgkIu6mx_qkPEAIQBw"; // <GPGSID>
-    //Ainda não utiizamos o Coins Rank
+    //Ainda nï¿½o utiizamos o Coins Rank
 }
 

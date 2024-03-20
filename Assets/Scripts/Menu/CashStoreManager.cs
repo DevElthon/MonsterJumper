@@ -7,22 +7,7 @@ public class CashStoreManager : MonoBehaviour
 {
     public void onPurchaseComplete(Product product)
     {
-        if (product.definition.id.Equals("coinspack1"))
-        {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 10000);
-        }
-
-        else if (product.definition.id.Equals("coinspack2"))
-        {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 30000);
-        }
-
-        else if (product.definition.id.Equals("coinspack3"))
-        {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 60000);
-        }
-
-        else if (product.definition.id.Equals("dullahanpack"))
+        if (product.definition.id.Equals("dullahanpack"))
         {
             PlayerPrefs.SetInt("Char4Unlocked", 1);
             PlayerPrefs.SetInt("Background2", 1);
@@ -37,6 +22,10 @@ public class CashStoreManager : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        PlayServices.UnlockAchievment(MonsterJumperServices.achievement_cash_knight);
+        else if(product.definition.id.Equals("freead")){
+            PlayerPrefs.SetInt("Freead", 1);
+        }
+
+        // PlayServices.UnlockAchievment(MonsterJumperServices.achievement_cash_knight);
     }
 }

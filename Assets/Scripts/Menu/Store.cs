@@ -55,7 +55,7 @@ public class Store : MonoBehaviour
 
     [Header("Cash Store")]
     [SerializeField]
-    GameObject cashStorePanel, dullapackBTn, dullapacksold, maxupbtn, maxupsold;
+    GameObject cashStorePanel, adblockBtn, addblockSold, dullapackBTn, dullapacksold, maxupbtn, maxupsold;
     [SerializeField]
     private Button cashStorePanelBtn;
     
@@ -212,6 +212,10 @@ public class Store : MonoBehaviour
         {
             maxupbtn.SetActive(false);
             maxupsold.SetActive(true);
+        }
+        if(PlayerPrefs.GetInt("Freead") == 1){
+            adblockBtn.SetActive(false);
+            addblockSold.SetActive(true);
         }
 
         //CharPage

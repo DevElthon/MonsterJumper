@@ -85,8 +85,21 @@ public class SecondRewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
 
     private void ShowAd()
     {
-        m_ShowAdButton.interactable = false;
-        Advertisement.Show(m_AdUnitId, this);
+        if(PlayerPrefs.GetInt("Freead") == 0){
+            m_ShowAdButton.interactable = false;
+            Advertisement.Show(m_AdUnitId, this);
+        }
+        else if(PlayerPrefs.GetInt("Freead") == 1){
+            if(GameManager.instance.lifeCount == 1)
+            {
+                GameManager.instance.invencible = true;
+                GameManager.instance.invTimer = 0;
+                GameManager.instance.invactive = true;
+                GameManager.instance.lifeCount -= 1;
+                GameManager.instance.inGame = true;
+                Time.timeScale = 1f;
+            }
+        }
     }
 
     #region IUnityAdsShowListener

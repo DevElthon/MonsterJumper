@@ -24,20 +24,24 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
 
     private void Update()
     {
-        if (!adLoaded)
-        {
-            LoadAd();
-        }
+        if(PlayerPrefs.GetInt("Freead") == 0){
+            
+            if (!adLoaded)
+            {
+                LoadAd();
+            }
 
-        if(MainMenuController.adCount == 4)
-        {
-            ShowAd();
+            if(MainMenuController.adCount == 4)
+            {
+                ShowAd();
+            }
         }
     }
 
     public void Initialize()
     {
-        LoadAd();
+        if(PlayerPrefs.GetInt("Freead") == 0)
+            LoadAd();
     }
 
     private void LoadAd()

@@ -21,6 +21,8 @@ public class MainMenuController : MonoBehaviour
     {
         //PlayerPrefs.SetInt("Coins", 999999);
         UpgradeData();
+        if (!PlayerPrefs.HasKey("Freead"))
+                PlayerPrefs.SetInt("Freead", 0);
     }
 
     public void UpgradeData()
@@ -28,21 +30,21 @@ public class MainMenuController : MonoBehaviour
         highscore.text = PlayerPrefs.GetInt("HighScore").ToString();
         Coins.text = PlayerPrefs.GetInt("Coins").ToString();
 
-        if (PlayerPrefs.GetInt("HighScore") > PlayServices.GetPlayerScore(MonsterJumperServices.leaderboard_ranking))
-        {
-            PlayServices.PostScore((long)PlayerPrefs.GetInt("HighScore"), MonsterJumperServices.leaderboard_ranking);
-        }
+        // if (PlayerPrefs.GetInt("HighScore") > PlayServices.GetPlayerScore(MonsterJumperServices.leaderboard_ranking))
+        // {
+        //     PlayServices.PostScore((long)PlayerPrefs.GetInt("HighScore"), MonsterJumperServices.leaderboard_ranking);
+        // }
     }
 
-    public void ShowAchievmentsUI()
-    {
-        PlayServices.ShowAchievments();
-    }
+    // public void ShowAchievmentsUI()
+    // {
+    //     PlayServices.ShowAchievments();
+    // }
 
-    public void ShowLeaderBoardUI()
-    {
-        PlayServices.ShowLeaderboard(MonsterJumperServices.leaderboard_ranking);
-    }
+    // public void ShowLeaderBoardUI()
+    // {
+    //     PlayServices.ShowLeaderboard(MonsterJumperServices.leaderboard_ranking);
+    // }
 
     public void LoadScene(int sceneId)
     {

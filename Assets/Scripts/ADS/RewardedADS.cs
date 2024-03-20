@@ -85,8 +85,17 @@ public class RewardedADS : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 
     private void ShowAd()
     {
-        m_ShowAdButton.interactable = false;
-        Advertisement.Show(m_AdUnitId, this);
+        if(PlayerPrefs.GetInt("Freead") == 0){
+            m_ShowAdButton.interactable = false;
+            Advertisement.Show(m_AdUnitId, this);
+        }
+        else if(PlayerPrefs.GetInt("Freead") == 1){
+            if (GameManager.instance.doubledCoins == false)
+            {
+                GameManager.instance.coins *= 2;
+                GameManager.instance.doubledCoins = true;
+            }
+        }
     }
 
     #region IUnityAdsShowListener
